@@ -1,0 +1,422 @@
+[
+  {
+    "_id": "tour_pq_3n2d_002",
+    "name": "Tour Phú Quốc 3N2Đ - Khám Phá Đảo Ngọc - Grand World",
+    "short_name": "Phú Quốc 3N2Đ - Câu Cá Ngắm San Hô",
+    "slug": "tour-phu-quoc-3-ngay-2-dem-khoi-hanh-sg",
+    "type": "3N2Đ",
+    "price": {
+      "amount": 3590000,
+      "currency": "VND",
+      "display": "3.590.000 VNĐ"
+    },
+    "rating_summary": {
+      "average": 4.7,
+      "count": 89
+    },
+    "upcoming_departures": [
+      { "date": "2024-06-01T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
+      { "date": "2024-06-15T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 }
+    ],
+    "recurring_schedule": ["Thứ 7 Hàng Tuần"],
+    "specs": [
+      { "k": "transport", "v": "Máy bay khứ hồi + Xe tham quan" },
+      { "k": "hotel_rating", "v": "3 sao (có hồ bơi)" },
+      { "k": "insurance_limit", "v": "100.000.000 VNĐ" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Phú Quốc" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_tan_son_nhat_domestic",
+      "name": "Sân bay Tân Sơn Nhất - Ga Quốc Nội",
+      "address": "Trường Sơn, Tân Bình, TP.HCM",
+      "coordinates": [10.818, 106.659]
+    },
+    "itinerary": [
+      {
+        "day_label": "Ngày 1",
+        "title": "TP.HCM - PHÚ QUỐC - GRAND WORLD",
+        "details": "Đón khách tại sân bay, bay đi Phú Quốc. Tham quan Grand World - Thành phố không ngủ."
+      },
+      {
+        "day_label": "Ngày 2",
+        "title": "CÂU CÁ - NGẮM SAN HÔ - BÃI SAO",
+        "details": "Lên tàu ra khơi câu cá, lặn ngắm san hô tại Hòn Móng Tay. Tắm biển Bãi Sao."
+      },
+      {
+        "day_label": "Ngày 3",
+        "title": "THAM QUAN NAM ĐẢO - TIỄN SÂN BAY",
+        "details": "Thăm nhà tù Phú Quốc, nhà thùng nước mắm. Xe đưa ra sân bay về lại TP.HCM."
+      }
+    ],
+    "policy": {
+        "included": ["Vé máy bay", "Khách sạn 3 sao", "Ăn uống trọn gói"],
+        "excluded": ["Vé VinWonders", "Chi phí cá nhân"]
+    },
+     "images": [ { "url": "/images/tour/phuquoc.webp", "caption": "Bãi Sao Phú Quốc" } ]
+  },
+  {
+    "_id": "tour_dl_3n3d_003",
+    "name": "Tour Đà Lạt 3N3Đ - Săn Mây Cầu Đất - Checkin Vườn Hoa",
+    "short_name": "Đà Lạt 3N3Đ - Thành Phố Ngàn Hoa",
+    "slug": "tour-da-lat-3-ngay-3-dem-xe-giuong-nam",
+    "type": "3N3Đ",
+    "price": {
+      "amount": 1890000,
+      "currency": "VND",
+      "display": "1.890.000 VNĐ"
+    },
+    "rating_summary": {
+      "average": 4.5,
+      "count": 210
+    },
+    "upcoming_departures": [
+      { "date": "2024-05-30T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 4 },
+      { "date": "2024-06-06T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 12 }
+    ],
+    "recurring_schedule": ["Thứ 5 Tối"],
+    "specs": [
+      { "k": "transport", "v": "Xe giường nằm cao cấp" },
+      { "k": "hotel_rating", "v": "2 sao (gần chợ)" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Đà Lạt" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_nvh_thanh_nien",
+      "name": "Nhà Văn Hóa Thanh Niên",
+      "address": "4 Phạm Ngọc Thạch, Q.1, TP.HCM",
+      "coordinates": [10.782, 106.696]
+    },
+    "itinerary": [
+      {
+        "day_label": "Đêm 1",
+        "title": "TP.HCM - ĐÀ LẠT",
+        "details": "22h00 xe đón khách, khởi hành đi Đà Lạt. Nghỉ đêm trên xe."
+      },
+      {
+        "day_label": "Ngày 1",
+        "title": "SĂN MÂY CẦU ĐẤT - VƯỜN HỒNG",
+        "details": "Đón bình minh tại đồi chè Cầu Đất. Tham quan vườn hồng treo gió."
+      },
+      {
+        "day_label": "Ngày 2",
+        "title": "LANGBIANG - THUNG LŨNG TÌNH YÊU",
+        "details": "Chinh phục đỉnh Langbiang. Tối giao lưu cồng chiêng Tây Nguyên."
+      },
+      {
+        "day_label": "Ngày 3",
+        "title": "CHỢ ĐÀ LẠT - TP.HCM",
+        "details": "Mua sắm đặc sản chợ Đà Lạt. Khởi hành về TP.HCM."
+      }
+    ],
+    "policy": {
+        "included": ["Xe giường nằm", "Khách sạn 2 sao", "Vé tham quan"],
+        "excluded": ["Xe Jeep Langbiang", "VAT"]
+    },
+    "images": [ { "url": "/images/tour/dalat.webp", "caption": "Săn mây Cầu Đất" } ]
+  },
+  {
+    "_id": "tour_nt_3n3d_004",
+    "name": "Tour Nha Trang 3N3Đ - VinWonders - Du Ngoạn 3 Đảo",
+    "short_name": "Nha Trang 3N3Đ - Biển Xanh Vẫy Gọi",
+    "slug": "tour-nha-trang-3-ngay-3-dem",
+    "type": "3N3Đ",
+    "price": {
+      "amount": 2100000,
+      "currency": "VND",
+      "display": "2.100.000 VNĐ"
+    },
+    "rating_summary": {
+      "average": 4.6,
+      "count": 120
+    },
+    "upcoming_departures": [
+        { "date": "2024-06-20T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 20 }
+    ],
+    "specs": [
+      { "k": "transport", "v": "Xe giường nằm thế hệ mới" },
+      { "k": "hotel_rating", "v": "4 sao (mặt biển)" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Nha Trang" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_cay_xang_comoco",
+      "name": "Cây xăng Comeco Hàng Xanh",
+      "address": "Ngã 4 Hàng Xanh, Bình Thạnh, TP.HCM",
+      "coordinates": [10.801, 106.711]
+    },
+    "itinerary": [
+      { "day_label": "Đêm 1", "title": "KHỞI HÀNH ĐI NHA TRANG", "details": "Xe đón đoàn khởi hành đi Nha Trang." },
+      { "day_label": "Ngày 1", "title": "BÃI DÀI - VINWONDERS", "details": "Tắm biển Bãi Dài. Chiều đi cáp treo qua VinWonders (tự túc)." },
+      { "day_label": "Ngày 2", "title": "DU NGOẠN ĐẢO - TẮM BÙN", "details": "Tham quan Hòn Mun, Hòn Một. Tắm bùn khoáng nóng I-Resort." },
+      { "day_label": "Ngày 3", "title": "CHỢ ĐẦM - TP.HCM", "details": "Mua sắm Chợ Đầm. Về lại TP.HCM." }
+    ],
+    "policy": {
+        "included": ["Xe đưa đón", "Khách sạn 4 sao", "4 bữa chính"],
+        "excluded": ["Vé Vinpearl", "Trò chơi biển"]
+    },
+    "images": [ { "url": "/images/tour/nhatrang.webp", "caption": "Biển Nha Trang" } ]
+  },
+  {
+    "_id": "tour_dn_ha_hue_4n3d_005",
+    "name": "Tour Đà Nẵng - Hội An - Huế - Bà Nà Hills 4N3Đ",
+    "short_name": "Di Sản Miền Trung 4N3Đ",
+    "slug": "tour-da-nang-hoi-an-hue-4n3d",
+    "type": "4N3Đ",
+    "price": {
+      "amount": 4200000,
+      "currency": "VND",
+      "display": "4.200.000 VNĐ"
+    },
+    "rating_summary": {
+      "average": 4.9,
+      "count": 300
+    },
+    "upcoming_departures": [
+        { "date": "2024-07-01T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 6 }
+    ],
+    "specs": [
+      { "k": "transport", "v": "Máy bay + Xe du lịch" },
+      { "k": "hotel_rating", "v": "3 sao chuẩn" },
+      { "k": "location_start", "v": "Đà Nẵng (Đón sân bay)" },
+      { "k": "location_end", "v": "Huế/Đà Nẵng" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_san_bay_da_nang",
+      "name": "Sân bay Quốc tế Đà Nẵng",
+      "address": "Hải Châu, Đà Nẵng",
+      "coordinates": [16.054, 108.202]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "ĐÀ NẴNG - NGŨ HÀNH SƠN - HỘI AN", "details": "Đón khách. Tham quan Ngũ Hành Sơn. Tối dạo phố cổ Hội An." },
+      { "day_label": "Ngày 2", "title": "BÀ NÀ HILLS - CẦU VÀNG", "details": "Đi cáp treo Bà Nà, check-in Cầu Vàng. Tối tự do tại Đà Nẵng." },
+      { "day_label": "Ngày 3", "title": "ĐÀ NẴNG - HUẾ - ĐẠI NỘI", "details": "Xuyên hầm Hải Vân đi Huế. Tham quan Đại Nội, Chùa Thiên Mụ." },
+      { "day_label": "Ngày 4", "title": "LĂNG KHẢI ĐỊNH - TIỄN KHÁCH", "details": "Tham quan Lăng Khải Định. Tiễn khách ra sân bay Phú Bài hoặc Đà Nẵng." }
+    ],
+    "policy": {
+        "included": ["Xe tham quan", "Khách sạn 3 sao", "Vé tham quan các điểm"],
+        "excluded": ["Vé cáp treo Bà Nà", "Vé máy bay khứ hồi"]
+    },
+    "images": [ { "url": "/images/tour/danang.webp", "caption": "Cầu Vàng Bà Nà Hills" } ]
+  },
+  {
+    "_id": "tour_qn_py_3n2d_006",
+    "name": "Tour Quy Nhơn - Phú Yên 3N2Đ - Kỳ Co - Eo Gió",
+    "short_name": "Xứ Nẫu Thân Thương 3N2Đ",
+    "slug": "tour-quy-nhon-phu-yen-3n2d",
+    "type": "3N2Đ",
+    "price": {
+      "amount": 2850000,
+      "currency": "VND",
+      "display": "2.850.000 VNĐ"
+    },
+    "upcoming_departures": [],
+    "specs": [
+      { "k": "transport", "v": "Xe 29 chỗ đời mới" },
+      { "k": "hotel_rating", "v": "3 sao sát biển" },
+      { "k": "location_start", "v": "Sân bay Phù Cát" },
+      { "k": "location_end", "v": "Quy Nhơn" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_san_bay_phu_cat",
+      "name": "Sân bay Phù Cát",
+      "address": "Bình Định",
+      "coordinates": [13.955, 109.042]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "ĐÓN KHÁCH - BẢO TÀNG QUANG TRUNG", "details": "Đón tại sân bay. Tham quan Bảo Tàng Quang Trung, KDL Ghềnh Ráng." },
+      { "day_label": "Ngày 2", "title": "PHÚ YÊN - GÀNH ĐÁ ĐĨA", "details": "Khởi hành đi Phú Yên. Tham quan Gành Đá Đĩa, Nhà thờ Mằng Lăng, Đầm Ô Loan." },
+      { "day_label": "Ngày 3", "title": "KỲ CO - EO GIÓ - TIỄN KHÁCH", "details": "Đi cano ra đảo Kỳ Co tắm biển. Check-in Eo Gió. Tiễn sân bay." }
+    ],
+    "policy": {
+        "included": ["Xe đưa đón", "Cano Kỳ Co", "Ăn uống 5 bữa"],
+        "excluded": ["Nước ngọt, bia trong bữa ăn"]
+    },
+    "images": [ { "url": "/images/tour/phuyen.webp", "caption": "Biển Kỳ Co" } ]
+  },
+  {
+    "_id": "tour_sp_3n2d_007",
+    "name": "Tour Sapa - Fansipan - Bản Cát Cát 3N2Đ (Từ Hà Nội)",
+    "short_name": "Sapa Mờ Sương 3N2Đ",
+    "slug": "tour-sapa-fansipan-3n2d",
+    "type": "3N2Đ",
+    "price": {
+      "amount": 2300000,
+      "currency": "VND",
+      "display": "2.300.000 VNĐ"
+    },
+    "upcoming_departures": [
+        { "date": "2024-09-02T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 25 }
+    ],
+    "specs": [
+      { "k": "transport", "v": "Xe giường nằm Cabin Love" },
+      { "k": "hotel_rating", "v": "3 sao view núi" },
+      { "k": "location_start", "v": "Hà Nội" },
+      { "k": "location_end", "v": "Hà Nội" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_tran_quang_khai",
+      "name": "Văn phòng xe Sapa",
+      "address": "Trần Quang Khải, Hoàn Kiếm, Hà Nội",
+      "coordinates": [21.026, 105.856]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "HÀ NỘI - SAPA - HÀM RỒNG", "details": "Xe đón tại phố cổ đi Sapa. Chiều leo núi Hàm Rồng ngắm toàn cảnh thị trấn." },
+      { "day_label": "Ngày 2", "title": "FANSIPAN LEGEND", "details": "Chinh phục đỉnh Fansipan bằng cáp treo. Săn mây trên đỉnh Đông Dương." },
+      { "day_label": "Ngày 3", "title": "BẢN CÁT CÁT - HÀ NỘI", "details": "Đi bộ tham quan bản Cát Cát của người H'Mong. Chiều lên xe về Hà Nội." }
+    ],
+    "policy": {
+        "included": ["Xe giường nằm khứ hồi", "Khách sạn", "Các bữa ăn"],
+        "excluded": ["Vé cáp treo Fansipan", "Xe điện"]
+    },
+    "images": [ { "url": "/images/tour/sapa.webp", "caption": "Đỉnh Fansipan" } ]
+  },
+  {
+    "_id": "tour_hl_nb_4n3d_008",
+    "name": "Tour Miền Bắc: Hà Nội - Hạ Long - Ninh Bình - Bái Đính 4N3Đ",
+    "short_name": "Hành Trình Di Sản Miền Bắc",
+    "slug": "tour-ha-noi-ha-long-ninh-binh-4n3d",
+    "type": "4N3Đ",
+    "price": {
+      "amount": 3990000,
+      "currency": "VND",
+      "display": "3.990.000 VNĐ"
+    },
+    "rating_summary": {
+        "average": 4.3,
+        "count": 55
+    },
+    "upcoming_departures": [],
+    "specs": [
+      { "k": "transport", "v": "Xe ô tô du lịch" },
+      { "k": "cruise_rating", "v": "Du thuyền 3 sao thăm vịnh" },
+      { "k": "location_start", "v": "Hà Nội" },
+      { "k": "location_end", "v": "Hà Nội" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_san_bay_noi_bai",
+      "name": "Sân bay Nội Bài",
+      "address": "Sóc Sơn, Hà Nội",
+      "coordinates": [21.218, 105.804]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "ĐÓN SÂN BAY - HÀ NỘI CITY", "details": "Đón sân bay Nội Bài. Tham quan Hồ Gươm, Văn Miếu." },
+      { "day_label": "Ngày 2", "title": "HÀ NỘI - TRÀNG AN - BÁI ĐÍNH", "details": "Đi Ninh Bình. Thăm chùa Bái Đính, đi thuyền Tràng An." },
+      { "day_label": "Ngày 3", "title": "NINH BÌNH - HẠ LONG", "details": "Khởi hành đi Hạ Long. Nhận phòng, tự do tắm biển Bãi Cháy." },
+      { "day_label": "Ngày 4", "title": "VỊNH HẠ LONG - HÀ NỘI", "details": "Lên tàu thăm Vịnh (Động Thiên Cung, Hòn Gà Chọi). Chiều về lại Hà Nội." }
+    ],
+    "policy": {
+        "included": ["Xe đưa đón", "Tàu thăm vịnh", "Khách sạn 3 sao"],
+        "excluded": ["Vé máy bay đến Hà Nội", "Vé xe điện Bái Đính"]
+    },
+    "images": [ { "url": "/images/tour/vinhhalong.webp", "caption": "Vịnh Hạ Long" } ]
+  },
+  {
+    "_id": "tour_bmt_3n2d_009",
+    "name": "Tour Tây Nguyên: Buôn Ma Thuột - Hồ Lắk - Dray Nur 3N2Đ",
+    "short_name": "Đại Ngàn Tây Nguyên 3N2Đ",
+    "slug": "tour-buon-ma-thuot-3n2d",
+    "type": "3N2Đ",
+    "price": {
+      "amount": 2600000,
+      "currency": "VND",
+      "display": "2.600.000 VNĐ"
+    },
+    "upcoming_departures": [
+      { "date": "2024-05-25T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 10 }
+    ],
+    "specs": [
+      { "k": "transport", "v": "Xe du lịch 16-29 chỗ" },
+      { "k": "hotel_rating", "v": "3 sao (Mường Thanh hoặc tương đương)" },
+      { "k": "location_start", "v": "Buôn Ma Thuột" },
+      { "k": "location_end", "v": "Buôn Ma Thuột" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_nga_6_bmt",
+      "name": "Ngã 6 Xe Tăng",
+      "address": "Trung tâm Buôn Ma Thuột",
+      "coordinates": [12.666, 108.038]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "THÁC DRAY NUR - BUÔN ĐÔN", "details": "Tham quan thác Dray Nur hùng vĩ. Chiều đi Buôn Đôn trải nghiệm cầu treo." },
+      { "day_label": "Ngày 2", "title": "HỒ LẮK - NÚI ĐÁ VOI", "details": "Thăm Hồ Lắk, cưỡi voi (chi phí tự túc), check-in Đá Voi Mẹ." },
+      { "day_label": "Ngày 3", "title": "BẢO TÀNG CÀ PHÊ - TIỄN KHÁCH", "details": "Tham quan Bảo Tàng Thế Giới Cà Phê. Mua sắm đặc sản. Tiễn sân bay." }
+    ],
+    "policy": {
+        "included": ["Xe tham quan", "Khách sạn", "Ăn uống"],
+        "excluded": ["Phí cưỡi voi/thuyền độc mộc", "Bia rượu"]
+    },
+    "images": [ { "url": "/images/tour/daklak.webp", "caption": "Thác Dray Nur" } ]
+  },
+  {
+    "_id": "tour_condao_2n1d_010",
+    "name": "Tour Côn Đảo Tâm Linh 2N1Đ - Viếng Mộ Cô Sáu",
+    "short_name": "Côn Đảo Huyền Thoại 2N1Đ",
+    "slug": "tour-con-dao-tam-linh-2n1d",
+    "type": "2N1Đ",
+    "price": {
+      "amount": 5500000,
+      "currency": "VND",
+      "display": "5.500.000 VNĐ"
+    },
+    "rating_summary": { "average": 4.8, "count": 45 },
+    "upcoming_departures": [],
+    "specs": [
+      { "k": "transport", "v": "Máy bay Bamboo/VNA + Xe 16 chỗ" },
+      { "k": "hotel_rating", "v": "2 sao (gần nghĩa trang)" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Côn Đảo" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_tan_son_nhat",
+      "name": "Sân bay Tân Sơn Nhất",
+      "address": "Tân Bình, TP.HCM",
+      "coordinates": [10.818, 106.659]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "TP.HCM - CÔN ĐẢO - VIẾNG CÔ SÁU", "details": "Bay ra Côn Đảo. Tham quan nhà tù, chuồng cọp. 23h00 viếng mộ Cô Sáu." },
+      { "day_label": "Ngày 2", "title": "CHÙA NÚI MỘT - TP.HCM", "details": "Viếng chùa Núi Một, miếu bà Phi Yến. Mua sắm hạt bàng. Bay về TP.HCM." }
+    ],
+    "policy": {
+        "included": ["Vé máy bay khứ hồi", "Xe đưa đón đảo", "Lễ viếng cơ bản"],
+        "excluded": ["Đồ lễ dâng hương riêng", "Ăn uống tự túc 1 bữa"]
+    },
+    "images": [ { "url": "/images/tour/condao.webp", "caption": "Nghĩa trang Hàng Dương" } ]
+  },
+  {
+    "_id": "tour_pt_2n1d_011",
+    "name": "Tour Phan Thiết - Mũi Né 2N1Đ - Bàu Trắng",
+    "short_name": "Mũi Né 2N1Đ - Resort Biển",
+    "slug": "tour-phan-thiet-mui-ne-2n1d",
+    "type": "2N1Đ",
+    "price": {
+      "amount": 1650000,
+      "currency": "VND",
+      "display": "1.650.000 VNĐ"
+    },
+    "upcoming_departures": [
+       { "date": "2024-06-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 }
+    ],
+    "specs": [
+      { "k": "transport", "v": "Xe ghế ngồi 45 chỗ" },
+      { "k": "hotel_rating", "v": "Resort 4 sao" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Phan Thiết" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_suoi_tien",
+      "name": "KDL Suối Tiên",
+      "address": "Xa lộ Hà Nội, Q.9, TP.HCM",
+      "coordinates": [10.864, 106.801]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "TP.HCM - MŨI NÉ - BÀU TRẮNG", "details": "Khởi hành đi Phan Thiết. Ăn trưa. Chiều đi xe Jeep tham quan Bàu Trắng." },
+      { "day_label": "Ngày 2", "title": "LÂU ĐÀI RƯỢU VANG - TP.HCM", "details": "Tắm biển nghỉ dưỡng. Tham quan Lâu Đài Rượu Vang. Mua nước mắm. Về TP.HCM." }
+    ],
+    "policy": {
+        "included": ["Xe đưa đón", "Resort 4 sao có hồ bơi", "3 bữa ăn"],
+        "excluded": ["Vé thử rượu vang", "Xe Jeep"]
+    },
+    "images": [ { "url": "/images/tour/phanthiet.webp", "caption": "Đồi Cát Bàu Trắng" } ]
+  }
+]   
