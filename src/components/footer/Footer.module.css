@@ -4,7 +4,10 @@
       rgba(0, 0, 0, 0.85), 
       rgba(0, 0, 0, 0.85)
     ),
-    url('');
+    url('background.png');
+  background-size: cover ;
+  background-position:center ;
+  background-repeat: no-repeat;
   padding: 6rem 0 4rem 0;
   margin-top: auto;   
 }
@@ -57,24 +60,25 @@
   text-decoration: none;
   text-align: left;
   font-size: 0.9rem;
-  display: block;
+  display: flex;
   align-items: center;
-  transition: all 0.3 ease;
+  line-height: 1;
+  transition: all 0.3 ease-in-out;
 }
 .linksGrid a::before, .socialLinks a::before{
-  content: ">";
+  content: "›";
   margin-right:8px;
   color: #2563eb;
   font-weight: bold;
   font-size: 1.2rem;
-  transition: all 0.3 ease;
+  transition: transform 0.3s ease;
 }
 .linksGrid a:hover, .socialLinks a:hover{
-  color: white;
-  padding-left: 5px;
+  color: #ffffff;
+  transform: translateX(5px);
 }
 .linksGrid a:hover::before{
-  transform: translateX(3px);
+  /* transform: translateX(3px); */
   color: #ffffff;
 }
 .columnRight{
@@ -106,4 +110,78 @@
   color: white;
   font-weight: 600;
 
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+  
+  .footerContent {
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .columnLeft,.columnRight {
+    padding: 0;
+  }
+  
+  .linksGrid,.socialLinks {
+    gap: 8px 30px;
+  }
+  
+  .columnLeft h3,
+  .subColumn h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 4rem 0 3rem 0;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .footerContent {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .columnLeft,.columnRight {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .linksGrid,.socialLinks {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 20px;
+    justify-items: center;
+  }
+  
+  .linksGrid a,.socialLinks a {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .titleContainer {
+    justify-content: center;
+  }
+  
+  .titleContainer::after {
+    display: none;
+  }
+  
+  .columnLeft h3,.subColumn h3 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .subColumn p {
+    font-size: 0.85rem;
+  }
 }
