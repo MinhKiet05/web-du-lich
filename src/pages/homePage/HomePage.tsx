@@ -35,7 +35,7 @@ export default function HomePage() {
 
   return (
     <div className={styles.homePage}>
-      <section style={{ backgroundImage: `url(${backgroundImage})` }}  >
+      <section style={{ backgroundImage: `url(${backgroundImage})` }} className={styles.heroSection} >
         <div className={styles.inSection}>
           <div className={styles.content}>
             <div className={styles.header}>

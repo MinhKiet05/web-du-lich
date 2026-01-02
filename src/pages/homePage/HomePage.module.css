@@ -1,6 +1,12 @@
 /*css cho home page*/
 
-.homePage section {
+.homePage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.homePage .heroSection {
   height: calc(100vh - 60px);
   background-size: cover;
   background-position: center;
@@ -220,7 +226,8 @@
 .toursSection {
   padding: 80px 0;
   background-color: #f8f9fa;
-  height: 1200px;
+  min-height: auto;
+  clear: both;
 }
 
 .container {
@@ -243,6 +250,7 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
   justify-items: center;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 768px) {

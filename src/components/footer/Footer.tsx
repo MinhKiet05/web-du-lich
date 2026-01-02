@@ -32,7 +32,7 @@ export default function Footer() {
                     </div>  
                 </div>
                 <div className={styles.copyright}>
-                    <p>&copy; 2025<span className={styles.brandName}> Web Du Lịch</span>. All rights reserved.</p>
+                    <p>&copy; 2025<span className={styles.brandName}> Travlia</span>. All rights reserved.</p>
                 </div>
             </div>
         </footer>
