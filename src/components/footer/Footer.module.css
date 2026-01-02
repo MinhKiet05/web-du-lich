@@ -1,14 +1,109 @@
 /*css cho footer*/
 .footer {
-  background: #333;
-  color: white;
-  padding: 1rem 0;
-  margin-top: auto;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.85), 
+      rgba(0, 0, 0, 0.85)
+    ),
+    url('');
+  padding: 6rem 0 4rem 0;
+  margin-top: auto;   
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  margin: 0   auto;
+  padding: 0;
   text-align: center;
+}
+.footerContent{
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  /* border: 1px solid #333; */
+  margin-bottom: 2rem;
+}
+.columnLeft{
+  padding: 0 2rem;
+}
+.columnLeft h3{
+  text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.titleContainer{
+  display:flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.titleContainer::after{
+  content:"";
+  flex: 1;  
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.linksGrid, .socialLinks{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 40px;
+}
+.linksGrid a, .socialLinks a{
+  color: #ccc;
+  text-decoration: none;
+  text-align: left;
+  font-size: 0.9rem;
+  display: block;
+  align-items: center;
+  transition: all 0.3 ease;
+}
+.linksGrid a::before, .socialLinks a::before{
+  content: ">";
+  margin-right:8px;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3 ease;
+}
+.linksGrid a:hover, .socialLinks a:hover{
+  color: white;
+  padding-left: 5px;
+}
+.linksGrid a:hover::before{
+  transform: translateX(3px);
+  color: #ffffff;
+}
+.columnRight{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.subColumn h3{
+  text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.subColumn p{
+  font-size: 0.9rem;
+  color: #ccc;
+
+}
+.copyright{
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+.copyright p{
+  color: #888;
+  font-size: 14px;
+}
+.brandName{
+  color: white;
+  font-weight: 600;
+
 }
