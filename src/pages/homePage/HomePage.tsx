@@ -5,10 +5,11 @@ import backgroundImage from '../../assets/du-lich.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faCalendarDays, faSearch } from '@fortawesome/free-solid-svg-icons';
 import Card from '../../components/card/Card';
-import toursData from '../../data/Tours.json';
+import { useTours } from '../../hooks/useTours';
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const { tours, loading, error } = useTours();
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
   const dateInputRef = useRef<HTMLInputElement>(null);
@@ -31,7 +32,43 @@ export default function HomePage() {
   };
 
   // Lấy 6 tours đầu tiên để hiển thị
-  const featuredTours = toursData.slice(0, 6);
+  const featuredTours = tours.slice(0, 6);
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className={styles.homePage}>
+        <section style={{ backgroundImage: `url(${backgroundImage})` }} className={styles.heroSection}>
+          <div className={styles.inSection}>
+            <div className={styles.content}>
+              <div className={styles.header}>
+                <h1>Đang tải tours...</h1>
+                <p>Vui lòng đợi trong giây lát.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className={styles.homePage}>
+        <section style={{ backgroundImage: `url(${backgroundImage})` }} className={styles.heroSection}>
+          <div className={styles.inSection}>
+            <div className={styles.content}>
+              <div className={styles.header}>
+                <h1>Lỗi tải dữ liệu</h1>
+                <p>Không thể tải tours. Vui lòng thử lại sau.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.homePage}>

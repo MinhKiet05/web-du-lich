@@ -68,7 +68,7 @@ export default function Card({ tour }: CardProps) {
       
       <div className={styles.cardContent}>
         <h3 className={styles.cardTitle}>{tour.short_name}</h3>
-        <p className={styles.cardLocation}>Địa điểm: {location}</p>
+        <p className={styles.cardLocation}>{tour.rating_summary ? `${tour.rating_summary.average}⭐` : 'Mới'}</p>
         
         <div className={styles.divider}></div>
         
@@ -83,7 +83,7 @@ export default function Card({ tour }: CardProps) {
           </div>
           <div className={styles.infoItem}>
             <FontAwesomeIcon icon={faLocationDot} className={styles.infoIcon} />
-            <span>{tour.rating_summary ? `${tour.rating_summary.average}⭐` : 'Mới'}</span>
+            <span>{location}</span>
           </div>
         </div>
         
