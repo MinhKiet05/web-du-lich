@@ -67,7 +67,7 @@ export default function DetailPage() {
         const tourData = await getTourByIdFromFirebase(id);
         
         if (tourData) {
-          setTour(tourData);
+          setTour(tourData as Tour);
         } else {
           console.log('No tour found with ID:', id);
           setTour(null);
