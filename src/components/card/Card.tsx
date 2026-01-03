@@ -1,6 +1,7 @@
 import styles from './Card.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faMoon, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faMoon, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 interface Tour {
   _id: string;
@@ -31,16 +32,19 @@ interface CardProps {
 }
 
 export default function Card({ tour }: CardProps) {
+  const navigate = useNavigate();
+  
   // Tính số ngày và đêm từ type
   const getDaysNights = (type: string) => {
-    const match = type.match(/(\d+)N(\d+)Đ/);
+    // Parse định dạng mới: "3 ngày 2 đêm"
+    const match = type.match(/(\d+)\s*ngày\s*(\d+)\s*đêm/i);
     if (match) {
       return {
-        nights: match[1],
-        days: match[2]
+        days: match[1],
+        nights: match[2]
       };
     }
-    return { nights: '0', days: '0' };
+    return { days: '0', nights: '0' };
   };
 
   // Lấy địa điểm từ specs
@@ -52,8 +56,12 @@ export default function Card({ tour }: CardProps) {
   const { nights, days } = getDaysNights(tour.type);
   const location = getLocation(tour.specs);
 
+  const handleCardClick = () => {
+    navigate(`/tour/${tour._id}`);
+  };
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleCardClick}>
       <div className={styles.imageContainer}>
         <img 
           src={tour.images[0]?.url || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=250&fit=crop'}
@@ -68,7 +76,7 @@ export default function Card({ tour }: CardProps) {
       
       <div className={styles.cardContent}>
         <h3 className={styles.cardTitle}>{tour.short_name}</h3>
-        <p className={styles.cardLocation}>Địa điểm: {location}</p>
+        <p className={styles.cardLocation}>{tour.rating_summary ? `${tour.rating_summary.average}` : 'Mới'}<FontAwesomeIcon icon={faStar} style={{color: "#FFD43B", marginLeft: "4px"}} /></p>
         
         <div className={styles.divider}></div>
         
@@ -83,7 +91,7 @@ export default function Card({ tour }: CardProps) {
           </div>
           <div className={styles.infoItem}>
             <FontAwesomeIcon icon={faLocationDot} className={styles.infoIcon} />
-            <span>{tour.rating_summary ? `${tour.rating_summary.average}⭐` : 'Mới'}</span>
+            <span>{location}</span>
           </div>
         </div>
         
@@ -92,7 +100,6 @@ export default function Card({ tour }: CardProps) {
             <span className={styles.priceLabel}>Giá từ</span>
             <span className={styles.price}>{tour.price.display}</span>
           </div>
-          <button className={styles.viewTourButton}>Xem Chi Tiết</button>
         </div>
       </div>
     </div>

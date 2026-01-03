@@ -1,10 +1,10 @@
 [
   {
     "_id": "tour_pq_3n2d_002",
-    "name": "Tour Phú Quốc 3N2Đ - Khám Phá Đảo Ngọc - Grand World",
-    "short_name": "Phú Quốc 3N2Đ - Câu Cá Ngắm San Hô",
+    "name": "Tour Phú Quốc 3 ngày 2 đêm - Khám Phá Đảo Ngọc - Grand World",
+    "short_name": "Phú Quốc 3 ngày 2 đêm - Câu Cá Ngắm San Hô",
     "slug": "tour-phu-quoc-3-ngay-2-dem-khoi-hanh-sg",
-    "type": "3N2Đ",
+    "type": "3 ngày 2 đêm",
     "price": {
       "amount": 3590000,
       "currency": "VND",
@@ -15,14 +15,14 @@
       "count": 89
     },
     "upcoming_departures": [
-      { "date": "2024-06-01T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
-      { "date": "2024-06-15T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 }
+      { "date": "2026-01-25T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
+      { "date": "2026-02-01T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 },
+      { "date": "2026-02-08T07:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
     ],
     "recurring_schedule": ["Thứ 7 Hàng Tuần"],
     "specs": [
       { "k": "transport", "v": "Máy bay khứ hồi + Xe tham quan" },
       { "k": "hotel_rating", "v": "3 sao (có hồ bơi)" },
-      { "k": "insurance_limit", "v": "100.000.000 VNĐ" },
       { "k": "location_start", "v": "TP.HCM" },
       { "k": "location_end", "v": "Phú Quốc" }
     ],
@@ -57,10 +57,10 @@
   },
   {
     "_id": "tour_dl_3n3d_003",
-    "name": "Tour Đà Lạt 3N3Đ - Săn Mây Cầu Đất - Checkin Vườn Hoa",
-    "short_name": "Đà Lạt 3N3Đ - Thành Phố Ngàn Hoa",
+    "name": "Tour Đà Lạt 3 ngày 3 đêm - Săn Mây Cầu Đất - Checkin Vườn Hoa",
+    "short_name": "Đà Lạt 3 ngày 3 đêm - Thành Phố Ngàn Hoa",
     "slug": "tour-da-lat-3-ngay-3-dem-xe-giuong-nam",
-    "type": "3N3Đ",
+    "type": "3 ngày 3 đêm",
     "price": {
       "amount": 1890000,
       "currency": "VND",
@@ -71,8 +71,9 @@
       "count": 210
     },
     "upcoming_departures": [
-      { "date": "2024-05-30T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 4 },
-      { "date": "2024-06-06T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 12 }
+      { "date": "2026-01-23T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 4 },
+      { "date": "2026-01-30T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 12 },
+      { "date": "2026-02-06T22:00:00Z", "day_of_week": "Thứ 5", "seats_left": 8 }
     ],
     "recurring_schedule": ["Thứ 5 Tối"],
     "specs": [
@@ -117,10 +118,10 @@
   },
   {
     "_id": "tour_nt_3n3d_004",
-    "name": "Tour Nha Trang 3N3Đ - VinWonders - Du Ngoạn 3 Đảo",
-    "short_name": "Nha Trang 3N3Đ - Biển Xanh Vẫy Gọi",
+    "name": "Tour Nha Trang 3 ngày 3 đêm - VinWonders - Du Ngoạn 3 Đảo",
+    "short_name": "Nha Trang 3 ngày 3 đêm - Biển Xanh Vẫy Gọi",
     "slug": "tour-nha-trang-3-ngay-3-dem",
-    "type": "3N3Đ",
+    "type": "3 ngày 3 đêm",
     "price": {
       "amount": 2100000,
       "currency": "VND",
@@ -131,8 +132,11 @@
       "count": 120
     },
     "upcoming_departures": [
-        { "date": "2024-06-20T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 20 }
+        { "date": "2026-01-23T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 20 },
+        { "date": "2026-01-30T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 15 },
+        { "date": "2026-02-06T21:00:00Z", "day_of_week": "Thứ 5", "seats_left": 22 }
     ],
+    "recurring_schedule": ["Thứ 5 hàng tuần"],
     "specs": [
       { "k": "transport", "v": "Xe giường nằm thế hệ mới" },
       { "k": "hotel_rating", "v": "4 sao (mặt biển)" },
@@ -159,10 +163,10 @@
   },
   {
     "_id": "tour_dn_ha_hue_4n3d_005",
-    "name": "Tour Đà Nẵng - Hội An - Huế - Bà Nà Hills 4N3Đ",
-    "short_name": "Di Sản Miền Trung 4N3Đ",
+    "name": "Tour Đà Nẵng - Hội An - Huế - Bà Nà Hills 4 ngày 3 đêm",
+    "short_name": "Di Sản Miền Trung 4 ngày 3 đêm",
     "slug": "tour-da-nang-hoi-an-hue-4n3d",
-    "type": "4N3Đ",
+    "type": "4 ngày 3 đêm",
     "price": {
       "amount": 4200000,
       "currency": "VND",
@@ -173,8 +177,11 @@
       "count": 300
     },
     "upcoming_departures": [
-        { "date": "2024-07-01T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 6 }
+        { "date": "2026-01-20T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 6 },
+        { "date": "2026-01-27T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 12 },
+        { "date": "2026-02-03T08:00:00Z", "day_of_week": "Thứ 2", "seats_left": 8 }
     ],
+    "recurring_schedule": ["Thứ 2 hàng tuần"],
     "specs": [
       { "k": "transport", "v": "Máy bay + Xe du lịch" },
       { "k": "hotel_rating", "v": "3 sao chuẩn" },
@@ -201,16 +208,25 @@
   },
   {
     "_id": "tour_qn_py_3n2d_006",
-    "name": "Tour Quy Nhơn - Phú Yên 3N2Đ - Kỳ Co - Eo Gió",
-    "short_name": "Xứ Nẫu Thân Thương 3N2Đ",
+    "name": "Tour Quy Nhơn - Phú Yên 3 ngày 2 đêm - Kỳ Co - Eo Gió",
+    "short_name": "Xứ Nẫu Thân Thương 3 ngày 2 đêm",
     "slug": "tour-quy-nhon-phu-yen-3n2d",
-    "type": "3N2Đ",
+    "type": "3 ngày 2 đêm",
     "price": {
       "amount": 2850000,
       "currency": "VND",
       "display": "2.850.000 VNĐ"
     },
-    "upcoming_departures": [],
+    "rating_summary": {
+      "average": 4.4,
+      "count": 67
+    },
+    "upcoming_departures": [
+      { "date": "2026-01-25T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 14 },
+      { "date": "2026-02-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 },
+      { "date": "2026-02-22T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 20 }
+    ],
+    "recurring_schedule": ["Thứ 7 cách tuần"],
     "specs": [
       { "k": "transport", "v": "Xe 29 chỗ đời mới" },
       { "k": "hotel_rating", "v": "3 sao sát biển" },
@@ -236,18 +252,21 @@
   },
   {
     "_id": "tour_sp_3n2d_007",
-    "name": "Tour Sapa - Fansipan - Bản Cát Cát 3N2Đ (Từ Hà Nội)",
-    "short_name": "Sapa Mờ Sương 3N2Đ",
+    "name": "Tour Sapa - Fansipan - Bản Cát Cát 3 ngày 2 đêm (Từ Hà Nội)",
+    "short_name": "Sapa Mờ Sương 3 ngày 2 đêm",
     "slug": "tour-sapa-fansipan-3n2d",
-    "type": "3N2Đ",
+    "type": "3 ngày 2 đêm",
     "price": {
       "amount": 2300000,
       "currency": "VND",
       "display": "2.300.000 VNĐ"
     },
     "upcoming_departures": [
-        { "date": "2024-09-02T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 25 }
+        { "date": "2026-01-20T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 25 },
+        { "date": "2026-01-27T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 20 },
+        { "date": "2026-02-03T06:30:00Z", "day_of_week": "Thứ 2", "seats_left": 18 }
     ],
+    "recurring_schedule": ["Thứ 2 hàng tuần"],
     "specs": [
       { "k": "transport", "v": "Xe giường nằm Cabin Love" },
       { "k": "hotel_rating", "v": "3 sao view núi" },
@@ -273,10 +292,10 @@
   },
   {
     "_id": "tour_hl_nb_4n3d_008",
-    "name": "Tour Miền Bắc: Hà Nội - Hạ Long - Ninh Bình - Bái Đính 4N3Đ",
+    "name": "Tour Miền Bắc: Hà Nội - Hạ Long - Ninh Bình - Bái Đính 4 ngày 3 đêm",
     "short_name": "Hành Trình Di Sản Miền Bắc",
     "slug": "tour-ha-noi-ha-long-ninh-binh-4n3d",
-    "type": "4N3Đ",
+    "type": "4 ngày 3 đêm",
     "price": {
       "amount": 3990000,
       "currency": "VND",
@@ -286,10 +305,16 @@
         "average": 4.3,
         "count": 55
     },
-    "upcoming_departures": [],
+    "upcoming_departures": [
+      { "date": "2026-01-20T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 16 },
+      { "date": "2026-02-03T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 20 },
+      { "date": "2026-02-17T07:00:00Z", "day_of_week": "Thứ 2", "seats_left": 12 }
+    ],
+    "recurring_schedule": ["Thứ 2 cách tuần"],
     "specs": [
       { "k": "transport", "v": "Xe ô tô du lịch" },
       { "k": "cruise_rating", "v": "Du thuyền 3 sao thăm vịnh" },
+      { "k": "hotel_rating", "v": "3 sao" },
       { "k": "location_start", "v": "Hà Nội" },
       { "k": "location_end", "v": "Hà Nội" }
     ],
@@ -313,18 +338,21 @@
   },
   {
     "_id": "tour_bmt_3n2d_009",
-    "name": "Tour Tây Nguyên: Buôn Ma Thuột - Hồ Lắk - Dray Nur 3N2Đ",
-    "short_name": "Đại Ngàn Tây Nguyên 3N2Đ",
+    "name": "Tour Tây Nguyên: Buôn Ma Thuột - Hồ Lắk - Dray Nur 3 ngày 2 đêm",
+    "short_name": "Đại Ngàn Tây Nguyên 3 ngày 2 đêm",
     "slug": "tour-buon-ma-thuot-3n2d",
-    "type": "3N2Đ",
+    "type": "3 ngày 2 đêm",
     "price": {
       "amount": 2600000,
       "currency": "VND",
       "display": "2.600.000 VNĐ"
     },
     "upcoming_departures": [
-      { "date": "2024-05-25T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 10 }
+      { "date": "2026-01-25T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 10 },
+      { "date": "2026-02-01T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 15 },
+      { "date": "2026-02-08T08:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
     ],
+    "recurring_schedule": ["Thứ 7 hàng tuần"],
     "specs": [
       { "k": "transport", "v": "Xe du lịch 16-29 chỗ" },
       { "k": "hotel_rating", "v": "3 sao (Mường Thanh hoặc tương đương)" },
@@ -350,20 +378,25 @@
   },
   {
     "_id": "tour_condao_2n1d_010",
-    "name": "Tour Côn Đảo Tâm Linh 2N1Đ - Viếng Mộ Cô Sáu",
-    "short_name": "Côn Đảo Huyền Thoại 2N1Đ",
+    "name": "Tour Côn Đảo Tâm Linh 2 ngày 1 đêm - Viếng Mộ Cô Sáu",
+    "short_name": "Côn Đảo Huyền Thoại 2 ngày 1 đêm",
     "slug": "tour-con-dao-tam-linh-2n1d",
-    "type": "2N1Đ",
+    "type": "2 ngày 1 đêm",
     "price": {
       "amount": 5500000,
       "currency": "VND",
       "display": "5.500.000 VNĐ"
     },
     "rating_summary": { "average": 4.8, "count": 45 },
-    "upcoming_departures": [],
+    "upcoming_departures": [
+      { "date": "2026-01-25T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 8 },
+      { "date": "2026-02-08T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 6 },
+      { "date": "2026-02-22T05:30:00Z", "day_of_week": "Thứ 7", "seats_left": 10 }
+    ],
+    "recurring_schedule": ["Thứ 7 cách tuần"],
     "specs": [
       { "k": "transport", "v": "Máy bay Bamboo/VNA + Xe 16 chỗ" },
-      { "k": "hotel_rating", "v": "2 sao (gần nghĩa trang)" },
+      { "k": "hotel_rating", "v": "2 sao" },
       { "k": "location_start", "v": "TP.HCM" },
       { "k": "location_end", "v": "Côn Đảo" }
     ],
@@ -385,18 +418,21 @@
   },
   {
     "_id": "tour_pt_2n1d_011",
-    "name": "Tour Phan Thiết - Mũi Né 2N1Đ - Bàu Trắng",
-    "short_name": "Mũi Né 2N1Đ - Resort Biển",
+    "name": "Tour Phan Thiết - Mũi Né 2 ngày 1 đêm - Bàu Trắng",
+    "short_name": "Mũi Né 2 ngày 1 đêm - Resort Biển",
     "slug": "tour-phan-thiet-mui-ne-2n1d",
-    "type": "2N1Đ",
+    "type": "2 ngày 1 đêm",
     "price": {
       "amount": 1650000,
       "currency": "VND",
       "display": "1.650.000 VNĐ"
     },
     "upcoming_departures": [
-       { "date": "2024-06-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 }
+       { "date": "2026-01-25T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 18 },
+       { "date": "2026-02-01T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 22 },
+       { "date": "2026-02-08T06:00:00Z", "day_of_week": "Thứ 7", "seats_left": 16 }
     ],
+    "recurring_schedule": ["Thứ 7 hàng tuần"],
     "specs": [
       { "k": "transport", "v": "Xe ghế ngồi 45 chỗ" },
       { "k": "hotel_rating", "v": "Resort 4 sao" },
