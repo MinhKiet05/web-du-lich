@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faMoon, faLocationDot, faPlane, faStar, faUsers, faClock, faRoute, faCar, faHotel } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faMoon, faLocationDot, faStar, faUsers, faClock, faRoute, faCar, faHotel } from '@fortawesome/free-solid-svg-icons';
 import { getTourByIdFromFirebase } from '../../utils/firebaseHelpers';
 import styles from './DetailPage.module.css';
 
@@ -53,7 +53,6 @@ interface Tour {
 
 export default function DetailPage() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const [tour, setTour] = useState<Tour | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -68,7 +67,7 @@ export default function DetailPage() {
         const tourData = await getTourByIdFromFirebase(id);
         
         if (tourData) {
-          setTour(tourData as Tour);
+          setTour(tourData);
         } else {
           console.log('No tour found with ID:', id);
           setTour(null);

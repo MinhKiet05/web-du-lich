@@ -31,7 +31,6 @@ export const getAllToursFromFirebase = async () => {
     const snapshot = await getDocs(toursCollection);
     
     const tours = snapshot.docs.map(doc => ({
-      id: doc.id,
       ...doc.data()
     }));
     
@@ -51,7 +50,6 @@ export const getTourByIdFromFirebase = async (tourId: string) => {
     
     if (tourDocSnap.exists()) {
       return {
-        id: tourDocSnap.id,
         ...tourDocSnap.data()
       };
     } else {
@@ -71,9 +69,8 @@ export const searchToursFromFirebase = async (searchQuery: string = '', selected
     const snapshot = await getDocs(toursCollection);
     
     const allTours = snapshot.docs.map(doc => ({
-      id: doc.id,
       ...doc.data()
-    }));
+    })) as any[];
 
     let filteredTours = allTours;
 
