@@ -11,14 +11,23 @@ export default function HomePage() {
   const navigate = useNavigate();
   const { tours, loading, error } = useTours();
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
   const dateInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    const hasQuery = searchQuery.trim();
+    const hasDate = selectedDate.trim();
+    
+    if (hasQuery || hasDate) {
+      const params = new URLSearchParams();
+      if (hasQuery) params.set('q', searchQuery.trim());
+      if (hasDate) params.set('date', selectedDate);
+      
+      navigate(`/search?${params.toString()}`);
       setSearchQuery('');
+      setSelectedDate('');
     }
   };
 
@@ -96,7 +105,13 @@ export default function HomePage() {
                 </div>
                 <div className={styles.thanhNganCach} onClick={handleDateContainerClick}>
                   <FontAwesomeIcon icon={faCalendarDays} className={styles.inputIcon} />
-                  <input ref={dateInputRef} type="date" className={styles.searchInput} />
+                  <input 
+                    ref={dateInputRef} 
+                    type="date" 
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className={styles.searchInput} 
+                  />
                 </div>
                 <button type="submit" className={styles.searchButton}>
                   <FontAwesomeIcon icon={faSearch} />
@@ -110,8 +125,7 @@ export default function HomePage() {
                 className={styles.seeAllButton} 
                 onClick={(e) => { 
                   e.preventDefault(); 
-                  setSearchQuery(''); 
-                  searchInputRef.current?.focus(); 
+                  navigate('/tours');
                 }}
               >
                 Xem tất cả các tour hiện tại →

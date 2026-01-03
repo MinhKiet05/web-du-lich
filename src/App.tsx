@@ -6,6 +6,7 @@ import TourPage from './pages/tourPage/TourPage';
 import AboutPage from './pages/aboutPage/AboutPage';
 import SearchPage from './pages/searchPage/SearchPage';
 import MyTours from './pages/myToursPage/MyTours';
+import DetailPage from './pages/detailPage/DetailPage';
 import Footer from './components/footer/Footer';
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/my-tours" element={<MyTours />} />
+              <Route path="/tour/:id" element={<DetailPage />} />
             </Routes>
           </main>
           <Footer />
