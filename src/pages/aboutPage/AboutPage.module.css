@@ -270,7 +270,8 @@
 .textContent p {
   color: #666;
   line-height: 1.6;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  opacity: 1;
 }
 
 
