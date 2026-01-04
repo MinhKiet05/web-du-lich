@@ -416,3 +416,151 @@
   filter: grayscale(0%);
   opacity: 1;
 }
+@media (max-width:1024px){
+  
+  .banner{
+    min-height: 300px;
+  }
+  .bannerContent{
+    min-height: 300px;
+  }
+  .contentSection{
+    max-height: 600px;
+    min-height: auto;
+    padding: 2rem;
+  }
+  .imageColumn{
+    height: auto;
+    max-height: 580px;
+  }
+}
+@media (max-width:768px){
+  .aboutPage{
+    padding: 0;
+  }
+  .banner{
+    margin: 0;
+    min-height: 400px;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+  }
+  .banner::after{
+    content:"";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+  .bannerContent{
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .bannerText{
+    padding: 2rem;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+  }
+  .bannerText h1{
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .bannerImage{
+    display: none;
+  }
+  .navLinks a{
+    background: rgba(255, 255, 255, 0.2); 
+    color: #fff;
+    border-color: #fff;
+    backdrop-filter: blur(5px); 
+  }
+  .navLinks a:hover{
+    background-color: #fff;
+    color: #000;
+  }
+  .contentSection{
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+    margin: 2rem 1rem;
+    max-height: none;
+    height: auto;
+  }
+  .imageColumn{
+    height: 300px;
+  }
+  .descriptionColumn{
+    padding: 0;
+  }
+  .timelineSection{
+    flex-direction: column;
+    height: auto;
+    gap: 40px;
+    margin-bottom: 3rem;
+  }
+  .colDivider{
+    display: none;
+  }
+  .colContent{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+  .timelineImg{
+    height: 250px;
+  }
+}
+@media (max-width:576px){
+  .bannerText h1{
+    font-size: 2.5rem;
+  }
+  .navLinks{
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .navLinks a{
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+  .colContent{
+    width: 100%;
+    padding: 10px;
+  }
+  .timelineImg{
+    height: 200px;
+  }
+  .teamGrid{
+    gap: 40px;
+  }
+  .memberImage{
+    width: 200px;
+    height: 200px;
+  }
+  .logoContainer{
+    gap:20px;
+  }
+  .logoContainer img{
+    max-height: 30px;
+  }
+  .trustedSection h3{
+    font-size: 1.5rem;
+  }
+  .timelineSection h2{
+    font-size: 1.5rem;
+  }
+  .teamSection h2{
+    font-size: 2                                                     rem;
+  }
+}

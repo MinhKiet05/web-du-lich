@@ -93,7 +93,7 @@ export default function AboutPage() {
   return (
     <div className={styles.aboutPage} ref={mainRef}>
       
-      <div className={styles.banner}>
+      <div className={styles.banner} style={{'--bg-image': `url(${backgroundImage})`}as React.CSSProperties}>
         <div className={styles.bannerContent}>
           <div className={styles.bannerText}>
             <h1>About Us</h1>
