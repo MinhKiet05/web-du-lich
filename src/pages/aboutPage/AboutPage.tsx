@@ -93,7 +93,6 @@ export default function AboutPage() {
   return (
     <div className={styles.aboutPage} ref={mainRef}>
       
-      {/* BANNER */}
       <div className={styles.banner}>
         <div className={styles.bannerContent}>
           <div className={styles.bannerText}>
@@ -110,7 +109,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* CONTENT */}
       <div className={styles.contentSection}>
         <div className={styles.imageColumn}>
           <img src={backgroundImage} alt="About us image" className={styles.mainImage} />
@@ -131,7 +129,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* TIMELINE */}
       <div className={styles.timelineSection}>
         <div className={styles.sectionHeader}>
           <p>Vacation Agency</p>
@@ -184,7 +181,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* TEAM */}
       <div className={styles.teamSection}>
         <div className={styles.teamHeader}>
           <h2>Team</h2>
@@ -226,7 +222,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* TRUSTED SECTION */}
       <div className={styles.trustedSection}>
         <h3>Trusted by Thousands of Travelers</h3>
         <div className={styles.logoContainer}>
