@@ -450,3 +450,15 @@
     height: 32px;
   }
 }
+@media (max-width: 480px) {
+  .userName {
+    display: none;
+  }
+  
+  .dropdownItem span {
+    display: none;
+  }
+  .loginBtn span{
+    display: none;
+  }
+}
