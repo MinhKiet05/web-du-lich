@@ -145,6 +145,31 @@
   gap: 1.5rem;
 }
 
+.loadMoreContainer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.loadMoreButton {
+  padding: 1rem 2rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.loadMoreButton:hover {
+  background: #5a67d8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .searchInputs {
@@ -166,6 +191,11 @@
   
   .searchHeader h1 {
     font-size: 2rem;
+  }
+  
+  .loadMoreButton {
+    width: 100%;
+    padding: 1.2rem 2rem;
   }
 }
 

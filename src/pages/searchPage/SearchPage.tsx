@@ -41,40 +41,62 @@ export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [selectedDate, setSelectedDate] = useState(searchParams.get('date') || '');
   const [tours, setTours] = useState<Tour[]>([]);
+  const [displayedTours, setDisplayedTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const toursPerPage = 6;
 
   useEffect(() => {
-    // Tự động search nếu có query params từ URL
+    // Tự động search khi component mount hoặc params thay đổi
     const query = searchParams.get('q');
     const date = searchParams.get('date');
+    
+    setSearchQuery(query || '');
+    setSelectedDate(date || '');
+    
     if (query || date) {
-      handleSearch();
+      performSearch(query || '', date || '');
     }
-  }, []);
+  }, [searchParams]);
+
+  const performSearch = async (query: string, date: string) => {
+    if (!query && !date) return;
+    
+    setLoading(true);
+    setHasSearched(true);
+    setCurrentPage(1);
+    
+    try {
+      const results = await searchToursFromFirebase(query, date);
+      setTours(results);
+      setDisplayedTours(results.slice(0, toursPerPage));
+    } catch (error) {
+      console.error('Error searching tours:', error);
+      setTours([]);
+      setDisplayedTours([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSearch = async () => {
     if (!searchQuery && !selectedDate) return;
     
-    setLoading(true);
-    setHasSearched(true);
+    // Cập nhật URL params
+    const params = new URLSearchParams();
+    if (searchQuery) params.set('q', searchQuery);
+    if (selectedDate) params.set('date', selectedDate);
+    setSearchParams(params);
+  };
+
+  const loadMoreTours = () => {
+    const nextPage = currentPage + 1;
+    const startIndex = nextPage * toursPerPage;
+    const newTours = tours.slice(toursPerPage, startIndex);
     
-    try {
-      const results = await searchToursFromFirebase(searchQuery, selectedDate);
-      setTours(results);
-      
-      // Cập nhật URL params
-      const params = new URLSearchParams();
-      if (searchQuery) params.set('q', searchQuery);
-      if (selectedDate) params.set('date', selectedDate);
-      setSearchParams(params);
-      
-    } catch (error) {
-      console.error('Error searching tours:', error);
-      setTours([]);
-    } finally {
-      setLoading(false);
-    }
+    setDisplayedTours(prev => [...prev, ...newTours]);
+    setCurrentPage(nextPage);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -131,17 +153,28 @@ export default function SearchPage() {
             </div>
           )}
           
-          {!loading && tours.length > 0 && (
+          {!loading && displayedTours.length > 0 && (
             <>
               <div className={styles.resultsHeader}>
                 <h2>Kết quả tìm kiếm ({tours.length} tour)</h2>
               </div>
               
               <div className={styles.resultsGrid}>
-                {tours.map((tour) => (
+                {displayedTours.map((tour) => (
                   <Card key={tour._id} tour={tour} />
                 ))}
               </div>
+              
+              {displayedTours.length < tours.length && (
+                <div className={styles.loadMoreContainer}>
+                  <button 
+                    onClick={loadMoreTours}
+                    className={styles.loadMoreButton}
+                  >
+                    Xem thêm ({tours.length - displayedTours.length} tour còn lại)
+                  </button>
+                </div>
+              )}
             </>
           )}
           
