@@ -32,6 +32,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
       await signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.error('Error signing in:', error);
+      console.error('Authentication error:', error);
+      
+      // Thêm thông báo lỗi cụ thể cho unauthorized domain
+      if (error.code === 'auth/unauthorized-domain') {
+        alert('Lỗi: Domain chưa được ủy quyền. Vui lòng liên hệ admin để thêm domain vào Firebase Console.');
+      }
+      
       throw error;
     }
   };

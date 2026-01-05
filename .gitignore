@@ -25,6 +25,6 @@ dist-ssr
 
 # Firebase service account key (NEVER commit this!)
 serviceAccountKey.json
-
+.env
 # Import scripts
 import.js
