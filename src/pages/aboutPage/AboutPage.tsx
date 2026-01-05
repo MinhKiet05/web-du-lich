@@ -9,6 +9,11 @@ import nissan from './nissan.png';
 import heineken from './heineken.png';
 import bs from './bs.png';
 import eubs from './eubs.png';
+import p1 from './1.png';
+import p2 from './2.png';
+import p3 from './3.png';
+import p4 from './4.png';
+import p5 from './5.png';
 
 // Đăng ký Plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -96,47 +101,48 @@ export default function AboutPage() {
       <div className={styles.banner} style={{'--bg-image': `url(${backgroundImage})`}as React.CSSProperties}>
         <div className={styles.bannerContent}>
           <div className={styles.bannerText}>
-            <h1>About Us</h1>
+            <h1>Về chúng tôi</h1>
             <div className={styles.navLinks}>
-              <a href="/">Home</a>
+              <a href="/">Trang chủ</a>
               <span className={styles.divider}>|</span>
-              <a href="/about">About</a>
+              <a href="/about">Về chúng tôi</a>
             </div>
           </div>
           <div className={styles.bannerImage}>
-            <img src={backgroundImage} alt="" />
+            <img src={p1} alt="" />
           </div>
         </div>
       </div>
 
       <div className={styles.contentSection}>
         <div className={styles.imageColumn}>
-          <img src={backgroundImage} alt="About us image" className={styles.mainImage} />
+          <img src={p2} alt="About us image" className={styles.mainImage} />
         </div>
         <div className={styles.descriptionColumn}>
           <div className={styles.description}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique assumenda culpa consequuntur eum, nulla provident sed deleniti repellat est iste veniam aliquam libero voluptatibus alias autem iure et numquam inventore?</p>
+            <h3>Mục đích của chúng tôi</h3>
+            <p>Được thành lập với niềm đam mê xê dịch, Travlia không chỉ là một công ty du lịch, chúng tôi là người bạn đồng hành tin cậy. Sứ mệnh của chúng tôi là kết nối bạn với những nền văn hóa độc đáo, mang lại những trải nghiệm chân thực và những kỷ niệm vô giá.</p>
           </div>
           <div className={styles.description}>
-            <h3>Trusted Travel Guide</h3>
-            <p>One shall be subjected to arbitary arrest, detention or exile</p>
+            <h3>Hướng dẫn viên bản địa</h3>
+            <p>Đội ngũ hướng dẫn viên của chúng tôi không chỉ là người dẫn đường, họ là những 'cuốn từ điển sống'. Họ am hiểu từng ngõ ngách, quán xá và những bí mật lịch sử mà chưa một cuốn sách du lịch nào kịp ghi chép, mang đến cho bạn góc nhìn sâu sắc nhất.</p>
           </div>
           <div className={styles.description}>
-            <h3>Personalized Trips</h3>
-            <p>One shall be subjected to arbitary arrest, detention or exile</p>
-            <button className={styles.moreBtn}>More About Us</button>
+            <h3>Lịch trình được cá nhân hoá!</h3>
+            <p>Chúng tôi nói không với những chuyến đi rập khuôn. Mọi lịch trình đều được 'may đo' tỉ mỉ dựa trên tính cách, sở thích và nhịp điệu riêng của bạn, đảm bảo mỗi khoảnh khắc trôi qua đều trọn vẹn ý nghĩa và cảm xúc.</p>
+            <button className={styles.moreBtn}>Hiểu thêm về chúng tôi</button>
           </div>
         </div>
       </div>
 
       <div className={styles.timelineSection}>
         <div className={styles.sectionHeader}>
-          <p>Vacation Agency</p>
-          <h2>The Best Holidays Start Here!</h2>
+          <p>Hành trình của chúng tôi</p>
+          <h2>Vì sao chọn Travlia?</h2>
         </div>
         <div className={styles.timelineRow}>
           <div className={styles.colContent}>
-            <img src={backgroundImage} alt="Cycling" className={styles.timelineImg} />
+            <img src={p3} alt="Cycling" className={styles.timelineImg} />
           </div>
           <div className={styles.colDivider}>
             <div className={styles.line}></div>
@@ -144,14 +150,14 @@ export default function AboutPage() {
           </div>
           <div className={styles.colContent}>
             <div className={styles.textContent}>
-              <h3>Traveling on a Budget</h3>
-              <p>No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality.</p>
+              <h3>Lên kế hoạch dễ dàng</h3>
+              <p>Hãy gạt bỏ mọi áp lực về thủ tục giấy tờ hay đặt phòng phức tạp. Với quy trình chuẩn hóa 5 sao, chúng tôi xử lý trọn gói từ visa, vé máy bay đến những resort nghỉ dưỡng cao cấp nhất. Việc duy nhất bạn cần làm là chuẩn bị một tâm hồn đẹp để tận hưởng chuyến đi.</p>
             </div>
           </div>
         </div>
         <div className={`${styles.timelineRow} ${styles.rowReverse}`}>
           <div className={styles.colContent}>
-            <img src={backgroundImage} alt="Cycling" className={styles.timelineImg} />
+            <img src={p4} alt="Cycling" className={styles.timelineImg} />
           </div>
           <div className={styles.colDivider}>
             <div className={styles.line}></div>
@@ -159,14 +165,14 @@ export default function AboutPage() {
           </div>
            <div className={styles.colContent}>
              <div className={styles.textContent}>
-              <h3>Traveling on a Budget</h3>
-              <p>No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality.</p>
+              <h3>Trải Nghiệm Văn Hóa Độc Bản</h3>
+              <p>Không chỉ là những điểm đến thông thường, chúng tôi mang đến cho bạn những trải nghiệm văn hóa độc đáo, nơi bạn có thể hòa mình vào đời sống địa phương và khám phá những điều chưa từng biết.</p>
             </div>
           </div>
         </div>
         <div className={styles.timelineRow}>
           <div className={styles.colContent}>
-            <img src={backgroundImage} alt="Cycling" className={styles.timelineImg} />
+            <img src={p5} alt="Cycling" className={styles.timelineImg} />
           </div>
           <div className={styles.colDivider}>
             <div className={styles.line}></div>
@@ -174,8 +180,8 @@ export default function AboutPage() {
           </div>
           <div className={styles.colContent}>
              <div className={styles.textContent}>
-              <h3>Traveling on a Budget</h3>
-              <p>No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full equality.</p>
+              <h3>Hệ Thống Hỗ Trợ Toàn Cầu 24/7</h3>
+              <p>Sự an toàn của bạn là ưu tiên tuyệt đối. Dù bạn đang ở Paris hoa lệ hay vùng núi cao Nepal, đội ngũ phản ứng nhanh của Travlia luôn túc trực 24/7 để giải quyết mọi tình huống phát sinh, đảm bảo hành trình của bạn luôn suôn sẻ và an yên.</p>
             </div>
           </div>
         </div>
@@ -183,8 +189,8 @@ export default function AboutPage() {
 
       <div className={styles.teamSection}>
         <div className={styles.teamHeader}>
-          <h2>Team</h2>
-          <h2>Meet The Team</h2>
+          <h2>Đội ngũ của chúng tôi</h2>
+          <h2>Những Người Kiến Tạo Giấc Mơ</h2>
         </div>
         <div className={styles.teamGrid}>
           <div className={styles.teamCard}>
@@ -194,13 +200,13 @@ export default function AboutPage() {
             <div className={styles.memberInfo}>
               <div className={styles.nameRow}>
                 <div className={styles.nameBlock}>
-                  <h3>Minh Kiet</h3>
-                  <span>Anh Minh Kiet ngoi trong quan uong ly ca phe</span>
+                  <h3>Minh Kiệt</h3>
+                  <span>Nhà sáng lập và CEO</span>
                 </div>
               </div>
             </div>
             <p className={styles.memberDesc}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Với hành trình thám hiểm hơn 1 thập kỷ qua 30 quốc gia, Minh Kiết dồn toàn bộ tâm huyết để xây dựng Travlia. Anh tin rằng mỗi chuyến đi không chỉ là sự dịch chuyển địa lý, mà là quá trình thay đổi tư duy và làm giàu vốn sống
             </p>
           </div>
           <div className={styles.teamCard}>
@@ -210,20 +216,20 @@ export default function AboutPage() {
             <div className={styles.memberInfo}>
               <div className={styles.nameRow}>
                 <div className={styles.nameBlock}>
-                  <h3>Minh Kiet</h3>
-                  <span>Anh Minh Kiet ngoi trong quan uong ly ca phe</span>
+                  <h3>Gia Bảo</h3>
+                  <span>Giám Đốc Vận Hành</span>
                 </div>
               </div>
             </div>
             <p className={styles.memberDesc}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Là người cầu toàn và tỉ mỉ, Gia Bảo đảm bảo từng chi tiết nhỏ nhất trong chuyến đi – từ chiếc khăn trải bàn đến hương vị món ăn – đều phải hoàn hảo. Anh  là 'nhạc trưởng' đứng sau sự thành công của hàng ngàn tour cao cấp
             </p>
           </div>
         </div>
       </div>
 
       <div className={styles.trustedSection}>
-        <h3>Trusted by Thousands of Travelers</h3>
+        <h3>Được Tin Tưởng Bởi Hơn 50.000 Du Khách Toàn Cầu</h3>
         <div className={styles.logoContainer}>
            <img src={nissan} alt="Nissan" />
            <img src={moto} alt="Motorola" />
