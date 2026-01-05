@@ -455,4 +455,216 @@
     },
     "images": [ { "url": "/images/tour/phanthiet.webp", "caption": "Đồi Cát Bàu Trắng" } ]
   }
+  ,
+  {
+    "_id": "tour_int_kr_5n4d_012",
+    "name": "Tour Hàn Quốc: Seoul - Nami - Công Viên Everland 5 ngày 4 đêm",
+    "short_name": "Khám Phá Xứ Sở Kim Chi 5N4Đ",
+    "slug": "tour-han-quoc-seoul-nami-5n4d",
+    "type": "5 ngày 4 đêm",
+    "price": {
+      "amount": 15990000,
+      "currency": "VND",
+      "display": "15.990.000 VNĐ"
+    },
+    "rating_summary": { "average": 4.9, "count": 156 },
+    "upcoming_departures": [
+      { "date": "2026-03-15T09:00:00Z", "day_of_week": "Chủ Nhật", "seats_left": 10 },
+      { "date": "2026-03-29T09:00:00Z", "day_of_week": "Chủ Nhật", "seats_left": 14 }
+    ],
+    "recurring_schedule": ["Chủ Nhật cách tuần"],
+    "specs": [
+      { "k": "transport", "v": "Máy bay khứ hồi (Vietnam Airlines/T'way)" },
+      { "k": "hotel_rating", "v": "4 sao tiêu chuẩn quốc tế" },
+      { "k": "location_start", "v": "TP.HCM (Sân bay Tân Sơn Nhất)" },
+      { "k": "location_end", "v": "Seoul (Sân bay Incheon)" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_tan_son_nhat_intl",
+      "name": "Sân bay Tân Sơn Nhất - Ga Quốc Tế",
+      "address": "Trường Sơn, Tân Bình, TP.HCM",
+      "coordinates": [10.818, 106.659]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "TP.HCM - SEOUL", "details": "Tập trung tại sân bay Tân Sơn Nhất, làm thủ tục đáp chuyến bay đi Seoul. Nghỉ đêm trên máy bay." },
+      { "day_label": "Ngày 2", "title": "ĐẢO NAMI - THÁP NAMSAN", "details": "Tham quan đảo Nami - bối cảnh phim Bản Tình Ca Mùa Đông. Check-in tháp truyền hình Namsan." },
+      { "day_label": "Ngày 3", "title": "CÔNG VIÊN EVERLAND - LỚP HỌC KIMCHI", "details": "Vui chơi tại Everland - Top 10 công viên giải trí thế giới. Trải nghiệm làm Kimchi và mặc Hanbok." },
+      { "day_label": "Ngày 4", "title": "CUNG ĐIỆN GYEONGBOKGUNG - SHOPPING", "details": "Tham quan Cung điện Hoàng Gia, Dinh Tổng Thống. Mua sắm tại trung tâm sâm chính phủ." },
+      { "day_label": "Ngày 5", "title": "SEOUL - TP.HCM", "details": "Mua sắm tại siêu thị miễn thuế. Xe đưa ra sân bay Incheon đáp chuyến bay về lại Việt Nam." }
+    ],
+    "policy": {
+      "included": ["Vé máy bay khứ hồi", "Phí visa Hàn Quốc", "Khách sạn 4 sao", "Bảo hiểm du lịch"],
+      "excluded": ["Tiền Tip cho HDV (5 USD/ngày)", "Chi phí cá nhân"]
+    },
+    "images": [{ "url": "/images/tour/hanquoc.webp", "caption": "Everland Korea park" }]
+  },
+  {
+    "_id": "tour_int_dubai_5n4d_013",
+    "name": "Tour Dubai - Abu Dhabi: Trải Nghiệm Xa Hoa 5 ngày 4 đêm",
+    "short_name": "Dubai - Xứ Sở Nghìn Lẻ Một Đêm",
+    "slug": "tour-dubai-abu-dhabi-5n4d",
+    "type": "5 ngày 4 đêm",
+    "price": {
+      "amount": 28900000,
+      "currency": "VND",
+      "display": "28.900.000 VNĐ"
+    },
+    "rating_summary": { "average": 4.8, "count": 82 },
+    "upcoming_departures": [
+      { "date": "2026-02-14T18:00:00Z", "day_of_week": "Thứ 7", "seats_left": 6 },
+      { "date": "2026-03-07T18:00:00Z", "day_of_week": "Thứ 7", "seats_left": 12 }
+    ],
+    "recurring_schedule": ["Thứ 7 đầu tháng"],
+    "specs": [
+      { "k": "transport", "v": "Hàng không 5 sao Emirates" },
+      { "k": "hotel_rating", "v": "4-5 sao" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Dubai" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_tan_son_nhat_intl",
+      "name": "Sân bay Tân Sơn Nhất - Cột số 12 Ga Quốc Tế",
+      "address": "Tân Bình, TP.HCM",
+      "coordinates": [10.818, 106.659]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "TP.HCM - DUBAI", "details": "Bay thẳng đi Dubai bằng Emirates. Nghỉ đêm tại khách sạn." },
+      { "day_label": "Ngày 2", "title": "PALM JUMEIRAH - BURJ KHALIFA", "details": "Đi tàu điện trên không ngắm đảo cọ. Chụp hình tháp cao nhất thế giới Burj Khalifa." },
+      { "day_label": "Ngày 3", "title": "SA MẠC SAFARI - BBQ", "details": "Trải nghiệm vượt sa mạc bằng xe Land Cruiser, cưỡi lạc đà, xem múa bụng và ăn tối BBQ." },
+      { "day_label": "Ngày 4", "title": "ABU DHABI - THÁNH ĐƯỜNG SHEIKH ZAYED", "details": "Tham quan thánh đường hồi giáo lớn nhất thế giới. Ghé thăm bảo tàng Louvre Abu Dhabi." },
+      { "day_label": "Ngày 5", "title": "SHOPPING - TP.HCM", "details": "Mua sắm tại Dubai Mall. Tiễn khách ra sân bay về lại Việt Nam." }
+    ],
+    "policy": {
+      "included": ["Visa Dubai", "Vé máy bay", "Khách sạn 4-5 sao", "Ăn uống theo chương trình"],
+      "excluded": ["Tiền Tip (8 USD/ngày)", "Vé lên đỉnh tháp Burj Khalifa"]
+    },
+    "images": [{ "url": "/images/tour/dubai.webp", "caption": "Sheikh Zayed Grand Mosque Abu Dhabi" }]
+  },
+  {
+    "_id": "tour_int_jp_6n5d_014",
+    "name": "Tour Nhật Bản: Tokyo - Phú Sĩ - Kyoto - Osaka 6 ngày 5 đêm",
+    "short_name": "Cung Đường Vàng Nhật Bản",
+    "slug": "tour-nhat-ban-6n5d-cung-duong-vang",
+    "type": "6 ngày 5 đêm",
+    "price": {
+      "amount": 32500000,
+      "currency": "VND",
+      "display": "32.500.000 VNĐ"
+    },
+    "rating_summary": { "average": 4.9, "count": 215 },
+    "upcoming_departures": [
+      { "date": "2026-03-25T00:30:00Z", "day_of_week": "Thứ 4", "seats_left": 4 },
+      { "date": "2026-04-01T00:30:00Z", "day_of_week": "Thứ 4", "seats_left": 8 }
+    ],
+    "recurring_schedule": ["Thứ 4 hàng tuần (Mùa hoa anh đào)"],
+    "specs": [
+      { "k": "transport", "v": "Tàu cao tốc Shinkansen + Máy bay" },
+      { "k": "hotel_rating", "v": "3-4 sao trung tâm" },
+      { "k": "location_start", "v": "Hà Nội/TP.HCM" },
+      { "k": "location_end", "v": "Osaka" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_san_bay_noi_bai",
+      "name": "Sân bay Nội Bài - Ga Quốc Tế",
+      "address": "Sóc Sơn, Hà Nội",
+      "coordinates": [21.218, 105.804]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "VIỆT NAM - TOKYO", "details": "Đến sân bay Narita. Xe đưa về nhận phòng khách sạn tại Tokyo." },
+      { "day_label": "Ngày 2", "title": "TOKYO CITY TOUR", "details": "Thăm chùa Asakusa, tháp Tokyo SkyTree, mua sắm tại Akihabara." },
+      { "day_label": "Ngày 3", "title": "NÚI PHÚ SĨ - LÀNG CỔ OSHINO HAKKAI", "details": "Lên trạm số 5 núi Phú Sĩ (nếu thời tiết cho phép). Thăm làng cổ dưới chân núi." },
+      { "day_label": "Ngày 4", "title": "SHINKANSEN - KYOTO", "details": "Trải nghiệm tàu Shinkansen đi Kyoto. Thăm Chùa Vàng Kinkakuji." },
+      { "day_label": "Ngày 5", "title": "OSAKA - LÂU ĐÀI OSAKA", "details": "Tham quan lâu đài Osaka, mua sắm tại phố Shinsaibashi sôi động." },
+      { "day_label": "Ngày 6", "title": "OSAKA - VIỆT NAM", "details": "Xe đưa đoàn ra sân bay Kansai làm thủ tục về Việt Nam." }
+    ],
+    "policy": {
+      "included": ["Visa Nhật Bản", "Vé Shinkansen", "Ăn sáng buffet", "HDV suốt tuyến"],
+      "excluded": ["Ăn tối tự túc 2 bữa", "VAT"]
+    },
+    "images": [{ "url": "/images/tour/nhatban.webp", "caption": "Mount Fuji cherry blossoms" }]
+  },
+  {
+    "_id": "tour_int_cn_6n5d_015",
+    "name": "Tour Trung Quốc: Bắc Kinh - Thượng Hải - Hàng Châu - Tô Châu",
+    "short_name": "Trung Hoa Cổ Kính & Hiện Đại",
+    "slug": "tour-trung-quoc-bac-kinh-thuong-hai-6n5d",
+    "type": "6 ngày 5 đêm",
+    "price": {
+      "amount": 18500000,
+      "currency": "VND",
+      "display": "18.500.000 VNĐ"
+    },
+    "rating_summary": { "average": 4.6, "count": 110 },
+    "upcoming_departures": [
+      { "date": "2026-02-10T08:00:00Z", "day_of_week": "Thứ 3", "seats_left": 15 },
+      { "date": "2026-02-24T08:00:00Z", "day_of_week": "Thứ 3", "seats_left": 20 }
+    ],
+    "recurring_schedule": ["Thứ 3 cách tuần"],
+    "specs": [
+      { "k": "transport", "v": "Máy bay + Tàu cao tốc" },
+      { "k": "hotel_rating", "v": "4 sao địa phương" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Bắc Kinh" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_tan_son_nhat_intl",
+      "name": "Sân bay Tân Sơn Nhất",
+      "address": "Tân Bình, TP.HCM",
+      "coordinates": [10.818, 106.659]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "TP.HCM - THƯỢNG HẢI", "details": "Đến Thượng Hải, thăm Bến Thượng Hải, tháp Truyền hình Minh Châu Phương Đông." },
+      { "day_label": "Ngày 2", "title": "TÔ CHÂU - HÀNG CHÂU", "details": "Thăm Sư Tử Lâm, dạo thuyền Tây Hồ Hàng Châu." },
+      { "day_label": "Ngày 3", "title": "HÀNG CHÂU - BẮC KINH", "details": "Trải nghiệm tàu cao tốc đi Bắc Kinh (tốc độ 300km/h)." },
+      { "day_label": "Ngày 4", "title": "VẠN LÝ TRƯỜNG THÀNH", "details": "Chinh phục cư dung quan Vạn Lý Trường Thành. Tối thưởng thức Vịt quay Bắc Kinh." },
+      { "day_label": "Ngày 5", "title": "TỬ CẤM THÀNH", "details": "Tham quan Cố Cung (Tử Cấm Thành), quảng trường Thiên An Môn." },
+      { "day_label": "Ngày 6", "title": "BẮC KINH - TP.HCM", "details": "Tự do mua sắm tại Vương Phủ Tỉnh trước khi ra sân bay." }
+    ],
+    "policy": {
+      "included": ["Visa đoàn Trung Quốc", "Vé máy bay", "Ăn uống trọn gói"],
+      "excluded": ["Tiền Tip HDV", "Phí tham quan ngoài chương trình"]
+    },
+    "images": [{ "url": "/images/tour/trungquoc.webp", "caption": "Great Wall of China Mutianyu" }]
+  },
+  {
+    "_id": "tour_int_sg_3n2d_016",
+    "name": "Tour Singapore: Garden By The Bay - Jewel Changi 3 ngày 2 đêm",
+    "short_name": "Singapore - Đảo Quốc Sư Tử",
+    "slug": "tour-singapore-3n2d-gia-re",
+    "type": "3 ngày 2 đêm",
+    "price": {
+      "amount": 8990000,
+      "currency": "VND",
+      "display": "8.990.000 VNĐ"
+    },
+    "rating_summary": { "average": 4.7, "count": 190 },
+    "upcoming_departures": [
+      { "date": "2026-01-23T07:00:00Z", "day_of_week": "Thứ 6", "seats_left": 12 },
+      { "date": "2026-01-30T07:00:00Z", "day_of_week": "Thứ 6", "seats_left": 18 }
+    ],
+    "recurring_schedule": ["Thứ 6 hàng tuần"],
+    "specs": [
+      { "k": "transport", "v": "Vietnam Airlines/Vietjet Air" },
+      { "k": "hotel_rating", "v": "3-4 sao (gần MRT)" },
+      { "k": "location_start", "v": "TP.HCM" },
+      { "k": "location_end", "v": "Singapore" }
+    ],
+    "pickup_location": {
+      "location_id": "loc_tan_son_nhat_intl",
+      "name": "Sân bay Tân Sơn Nhất",
+      "address": "Tân Bình, TP.HCM",
+      "coordinates": [10.818, 106.659]
+    },
+    "itinerary": [
+      { "day_label": "Ngày 1", "title": "TP.HCM - SINGAPORE - JEWEL", "details": "Đến sân bay Changi, check-in thác nước Jewel. Tối đi du thuyền trên sông Singapore (tự túc)." },
+      { "day_label": "Ngày 2", "title": "GARDENS BY THE BAY - SENTOSA", "details": "Thăm hai nhà kính Flower Dome & Cloud Forest. Chiều vui chơi tại đảo Sentosa." },
+      { "day_label": "Ngày 3", "title": "CHÙA RĂNG PHẬT - VIỆT NAM", "details": "Viếng chùa Răng Phật tại China Town. Mua sắm dầu gió, bánh kẹo tại Marina Square." }
+    ],
+    "policy": {
+      "included": ["Vé máy bay", "Khách sạn", "Xe đưa đón tham quan"],
+      "excluded": ["Ăn tối ngày 2", "Vé vào cổng Universal Studios"]
+    },
+    "images": [{ "url": "/images/tour/sing.webp", "caption": "Gardens by the Bay Supertree Grove night" }]
+  }
+
 ]   
