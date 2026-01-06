@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -103,9 +104,9 @@ export default function AboutPage() {
           <div className={styles.bannerText}>
             <h1>Về chúng tôi</h1>
             <div className={styles.navLinks}>
-              <a href="/">Trang chủ</a>
+              <Link to="/">Trang chủ</Link>
               <span className={styles.divider}>|</span>
-              <a href="/about">Về chúng tôi</a>
+              <Link to="/about">Về chúng tôi</Link>
             </div>
           </div>
           <div className={styles.bannerImage}>
