@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faMoon, faLocationDot, faStar, faUsers, faClock, faRoute, faCar, faHotel, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faMoon, faLocationDot, faStar, faClock, faRoute, faCar, faHotel, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { getTourByIdFromFirebase } from '../../utils/firebaseHelpers';
 import { useAuth } from '../../context/AuthContext';
 import { collection, addDoc } from 'firebase/firestore';
