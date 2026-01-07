@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCalendarDays, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Card from '../../components/card/Card';
 import { getAllToursFromFirebase } from '../../utils/firebaseHelpers';
 import styles from './SearchPage.module.css';
@@ -250,11 +250,6 @@ export default function SearchPage() {
     
     setDisplayedTours(prev => [...prev, ...newTours]);
     setCurrentPage(nextPage);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSearch();
   };
 
   const toggleSection = (section: keyof typeof collapsedSections) => {
