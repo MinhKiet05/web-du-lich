@@ -302,7 +302,6 @@ export default function SearchPage() {
   return (
     <div className={styles.searchPage}>
       <div className={styles.container}>
-        <h1 className={styles.pageTitle}>Tours</h1>
 
         <div className={styles.mainContent}>
           {/* Sidebar */}
@@ -482,9 +481,6 @@ export default function SearchPage() {
                   <option value="rating">Đánh giá cao</option>
                 </select>
               </div>
-              <div className={styles.resultsCount}>
-                Hiển thị {displayedTours.length} / {tours.length} tours
-              </div>
             </div>
 
             {/* Hiển thị kết quả sau khi tìm kiếm */}
@@ -514,7 +510,7 @@ export default function SearchPage() {
                         onClick={loadMoreTours}
                         className={styles.loadMoreButton}
                       >
-                        Xem thêm ({tours.length - displayedTours.length} tour còn lại)
+                        Xem thêm
                       </button>
                     </div>
                   )}
