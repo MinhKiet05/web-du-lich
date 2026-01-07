@@ -1,9 +1,61 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faMoon, faLocationDot, faStar, faUsers, faClock, faRoute, faCar, faHotel } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faMoon, faLocationDot, faStar, faUsers, faClock, faRoute, faCar, faHotel, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { getTourByIdFromFirebase } from '../../utils/firebaseHelpers';
+import { useAuth } from '../../context/AuthContext';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+import QRPayment from '../../components/qrPayment/QRPayment';
 import styles from './DetailPage.module.css';
+import modalStyles from './BookingModal.module.css';
+
+interface Booking {
+  user_context: {
+    uid: string;
+    email: string;
+    display_name: string;
+  };
+  tour_snapshot: {
+    tour_id: string;
+    tour_name: string;
+    departure_date: string;
+    base_price: number;
+    slug: string;
+  };
+  customer_details: {
+    lead_passenger: {
+      full_name: string;
+      phone: string;
+      identity_card: string;
+    };
+    participants: Array<{
+      type: string;
+      qty: number;
+      price_at_booking: number;
+    }>;
+    special_requests: Array<{
+      k: string;
+      v: string;
+    }>;
+  };
+  billing: {
+    sub_total: number;
+    discount_code?: string;
+    discount_amount: number;
+    total_amount: number;
+    currency: string;
+    payment_status: string;
+  };
+  status_history: Array<{
+    status: string;
+    updated_at: string;
+    note: string;
+  }>;
+  metadata: {
+    created_at: string;
+  };
+}
 
 interface Tour {
   _id: string;
@@ -55,6 +107,19 @@ export default function DetailPage() {
   const { id } = useParams<{ id: string }>();
   const [tour, setTour] = useState<Tour | null>(null);
   const [loading, setLoading] = useState(true);
+  const [selectedDeparture, setSelectedDeparture] = useState<{date: string; day_of_week: string; seats_left: number} | null>(null);
+  const [showBookingModal, setShowBookingModal] = useState(false);
+  const [modalStep, setModalStep] = useState<'booking' | 'payment'>('booking');
+  const [bookingId, setBookingId] = useState<string>('');
+  const [bookingForm, setBookingForm] = useState({
+    full_name: '',
+    phone: '',
+    identity_card: '',
+    adults: 2,
+    children: 0,
+    special_requests: ''
+  });
+  const { currentUser, login } = useAuth();
 
   useEffect(() => {
     const loadTourData = async () => {
@@ -102,6 +167,89 @@ export default function DetailPage() {
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('vi-VN');
+  };
+
+  const handleBookNow = async () => {
+    if (!selectedDeparture) {
+      alert('Vui lòng chọn ngày khởi hành');
+      return;
+    }
+
+    if (!currentUser) {
+      try {
+        await login();
+      } catch (error) {
+        console.error('Login failed:', error);
+        return;
+      }
+    }
+
+    if (currentUser) {
+      setModalStep('booking');
+      setShowBookingModal(true);
+    }
+  };
+
+  const calculateTotal = () => {
+    if (!tour) return 0;
+    const adultPrice = tour.price.amount;
+    const childPrice = tour.price.amount * 0.5; // Giả sử trẻ em 50% giá người lớn
+    return (bookingForm.adults * adultPrice) + (bookingForm.children * childPrice);
+  };
+
+  const handleSubmitBooking = async () => {
+    if (!currentUser || !tour || !selectedDeparture) return;
+
+    try {
+      const booking: Booking = {
+        user_context: {
+          uid: currentUser.uid,
+          email: currentUser.email || '',
+          display_name: currentUser.displayName || bookingForm.full_name
+        },
+        tour_snapshot: {
+          tour_id: tour._id,
+          tour_name: tour.name,
+          departure_date: selectedDeparture.date,
+          base_price: tour.price.amount,
+          slug: tour.slug
+        },
+        customer_details: {
+          lead_passenger: {
+            full_name: bookingForm.full_name,
+            phone: bookingForm.phone,
+            identity_card: bookingForm.identity_card
+          },
+          participants: [
+            { type: 'Người lớn', qty: bookingForm.adults, price_at_booking: tour.price.amount },
+            { type: 'Trẻ em', qty: bookingForm.children, price_at_booking: tour.price.amount * 0.5 }
+          ].filter(p => p.qty > 0),
+          special_requests: bookingForm.special_requests ? [{ k: 'note', v: bookingForm.special_requests }] : []
+        },
+        billing: {
+          sub_total: calculateTotal(),
+          discount_amount: 0,
+          total_amount: calculateTotal(),
+          currency: 'VND',
+          payment_status: 'PENDING'
+        },
+        status_history: [{
+          status: 'BOOKED',
+          updated_at: new Date().toISOString(),
+          note: 'Người dùng tạo đơn từ website'
+        }],
+        metadata: {
+          created_at: new Date().toISOString()
+        }
+      };
+
+      const docRef = await addDoc(collection(db, 'bookings'), booking);
+      setBookingId(docRef.id);
+      setModalStep('payment');
+    } catch (error) {
+      console.error('Error creating booking:', error);
+      alert('Có lỗi xảy ra khi đặt tour. Vui lòng thử lại.');
+    }
   };
 
   if (loading) {
@@ -179,9 +327,52 @@ export default function DetailPage() {
               <span className={styles.priceLabel}>Giá tour:</span>
               <span className={styles.price}>{tour.price.display}</span>
             </div>
-            
+            {tour.upcoming_departures && tour.upcoming_departures.length > 0 && (
+          <div className={styles.departuresSection}>
+            <div className={styles.departuresGrid}>
+              {tour.upcoming_departures.map((departure, index) => (
+                <div 
+                  key={index} 
+                  className={`${styles.departureItem} ${selectedDeparture?.date === departure.date ? styles.selected : ''}`}
+                  onClick={() => setSelectedDeparture(departure)}
+                >
+                  <div className={styles.departureLeft}>
+                    <div className={styles.departureDate}>
+                      {formatDate(departure.date)}
+                    </div>
+                    <div className={styles.departureDow}>
+                      {departure.day_of_week}
+                    </div>
+                  </div>
+                  <div className={styles.departureRight}>
+                    <div className={`${styles.departureStatus} ${departure.seats_left <= 6 ? styles.statusAlmostFull : styles.statusAvailable}`}>
+                      {departure.seats_left <= 6 ? 'Sắp hết' : 'Đang nhận'}
+                    </div>
+                    <div className={styles.departureSeats}>
+                      {departure.seats_left <= 6 
+                        ? `Chỉ còn ${departure.seats_left} chỗ`
+                        : `Còn ${departure.seats_left} chỗ trống`
+                      }
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {tour.recurring_schedule && (
+              <p className={styles.recurringInfo}>
+                Lịch trình: {tour.recurring_schedule.join(', ')}
+              </p>
+            )}
+          </div>
+        )}
             <div className={styles.actions}>
-              <button className={styles.bookButton}>Đặt tour ngay</button>
+              <button 
+                className={`${styles.bookButton} ${!selectedDeparture ? styles.disabled : ''}`}
+                onClick={handleBookNow}
+                disabled={!selectedDeparture}
+              >
+                {!selectedDeparture ? 'Chọn ngày khởi hành' : 'Đặt tour ngay'}
+              </button>
               <button className={styles.favoriteButton}>♡ Yêu thích</button>
             </div>
           </div>
@@ -232,32 +423,7 @@ export default function DetailPage() {
         </div>
 
         {/* Upcoming Departures */}
-        {tour.upcoming_departures && tour.upcoming_departures.length > 0 && (
-          <div className={styles.departuresSection}>
-            <h3>Lịch khởi hành</h3>
-            <div className={styles.departuresGrid}>
-              {tour.upcoming_departures.map((departure, index) => (
-                <div key={index} className={styles.departureItem}>
-                  <div className={styles.departureDate}>
-                    {formatDate(departure.date)}
-                  </div>
-                  <div className={styles.departureDow}>
-                    {departure.day_of_week}
-                  </div>
-                  <div className={styles.departureSeats}>
-                    <FontAwesomeIcon icon={faUsers} />
-                    {departure.seats_left} chỗ trống
-                  </div>
-                </div>
-              ))}
-            </div>
-            {tour.recurring_schedule && (
-              <p className={styles.recurringInfo}>
-                Lịch trình: {tour.recurring_schedule.join(', ')}
-              </p>
-            )}
-          </div>
-        )}
+        
 
         {/* Itinerary */}
         <div className={styles.itinerarySection}>
@@ -297,6 +463,182 @@ export default function DetailPage() {
             </div>
           </div>
         </div>
+
+        {/* Booking Modal */}
+        {showBookingModal && (
+          <div className={modalStyles.modalOverlay} onClick={() => {
+            setShowBookingModal(false);
+            setModalStep('booking');
+          }}>
+            <div className={modalStyles.bookingModal} onClick={(e) => e.stopPropagation()}>
+              {modalStep === 'booking' ? (
+                <>
+                  <div className={modalStyles.modalHeader}>
+                    <h3>Đặt Tour Du Lịch</h3>
+                    <button 
+                      className={modalStyles.closeButton}
+                      onClick={() => {
+                        setShowBookingModal(false);
+                        setModalStep('booking');
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                  </div>
+                  
+                  <div className={modalStyles.modalContent}>
+                    <div className={modalStyles.tourSummary}>
+                      <img 
+                        src={tour?.images[0]?.url} 
+                        alt={tour?.name}
+                        className={modalStyles.tourImage}
+                      />
+                      <div className={modalStyles.tourInfo}>
+                        <h4>{tour?.name}</h4>
+                        <p>{selectedDeparture && formatDate(selectedDeparture.date)} - {selectedDeparture?.day_of_week}</p>
+                        <p className={modalStyles.tourPrice}>{tour?.price.display}</p>
+                      </div>
+                    </div>
+
+                    <div className={modalStyles.formSection}>
+                      <h4>Thông tin liên hệ</h4>
+                      <div className={modalStyles.formGrid}>
+                        <div className={modalStyles.formGroup}>
+                          <label>Họ và tên *</label>
+                          <input 
+                            type="text"
+                            value={bookingForm.full_name}
+                            onChange={(e) => setBookingForm({...bookingForm, full_name: e.target.value})}
+                            placeholder="Nguyễn Văn A"
+                            required
+                          />
+                        </div>
+                        <div className={modalStyles.formGroup}>
+                          <label>Số điện thoại *</label>
+                          <input 
+                            type="tel"
+                            value={bookingForm.phone}
+                            onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
+                            placeholder="0901234567"
+                            required
+                          />
+                        </div>
+                        <div className={modalStyles.formGroup}>
+                          <label>CCCD/CMND *</label>
+                          <input 
+                            type="text"
+                            value={bookingForm.identity_card}
+                            onChange={(e) => setBookingForm({...bookingForm, identity_card: e.target.value})}
+                            placeholder="Số giấy tờ tùy thân"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={modalStyles.formSection}>
+                      <h4>Số lượng khách</h4>
+                      <div className={modalStyles.participantGrid}>
+                        <div className={modalStyles.participantItem}>
+                          <div className={modalStyles.participantInfo}>
+                            <span>Người lớn</span>
+                            <span>Từ 12 tuổi trở lên</span>
+                            <span className={modalStyles.price}>{tour?.price.display}</span>
+                          </div>
+                          <div className={modalStyles.quantityControl}>
+                            <button 
+                              type="button"
+                              onClick={() => setBookingForm({...bookingForm, adults: Math.max(1, bookingForm.adults - 1)})}
+                            >
+                              -
+                            </button>
+                            <span>{bookingForm.adults}</span>
+                            <button 
+                              type="button"
+                              onClick={() => setBookingForm({...bookingForm, adults: bookingForm.adults + 1})}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                        
+                        <div className={modalStyles.participantItem}>
+                          <div className={modalStyles.participantInfo}>
+                            <span>Trẻ em</span>
+                            <span>Từ 5 - 11 tuổi</span>
+                            <span className={modalStyles.price}>{tour && `${(tour.price.amount * 0.5).toLocaleString('vi-VN')}đ`}</span>
+                          </div>
+                          <div className={modalStyles.quantityControl}>
+                            <button 
+                              type="button"
+                              onClick={() => setBookingForm({...bookingForm, children: Math.max(0, bookingForm.children - 1)})}
+                            >
+                              -
+                            </button>
+                            <span>{bookingForm.children}</span>
+                            <button 
+                              type="button"
+                              onClick={() => setBookingForm({...bookingForm, children: bookingForm.children + 1})}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={modalStyles.formSection}>
+                      <h4>Yêu cầu đặc biệt</h4>
+                      <textarea 
+                        value={bookingForm.special_requests}
+                        onChange={(e) => setBookingForm({...bookingForm, special_requests: e.target.value})}
+                        placeholder="Ví dụ: Ăn chay, có người già di chuyển khó khăn..."
+                        rows={3}
+                      />
+                    </div>
+
+                    <div className={modalStyles.totalSection}>
+                      <div className={modalStyles.totalRow}>
+                        <span>Tổng cộng</span>
+                        <span className={modalStyles.totalAmount}>
+                          {calculateTotal().toLocaleString('vi-VN')}đ
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={modalStyles.modalActions}>
+                      <button 
+                        className={modalStyles.confirmButton}
+                        onClick={handleSubmitBooking}
+                        disabled={!bookingForm.full_name || !bookingForm.phone || !bookingForm.identity_card}
+                      >
+                        Tiếp tục thanh toán ➜
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <QRPayment 
+                  amount={calculateTotal()}
+                  orderId={bookingId}
+                  onClose={() => {
+                    setShowBookingModal(false);
+                    setModalStep('booking');
+                    setBookingForm({
+                      full_name: '',
+                      phone: '',
+                      identity_card: '',
+                      adults: 2,
+                      children: 0,
+                      special_requests: ''
+                    });
+                    alert('Cảm ơn bạn đã đặt tour! Chúng tôi sẽ xác nhận đơn hàng sau khi nhận được thanh toán.');
+                  }}
+                />
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -109,13 +109,11 @@
 /* New sections */
 .specsSection,
 .pickupSection,
-.departuresSection,
 .itinerarySection,
 .policySection {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  margin-bottom: 2rem;
 }
 
 .specsSection h3,
@@ -137,9 +135,9 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .specIcon {
@@ -180,37 +178,91 @@
 }
 
 .departuresGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .departureItem {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
+  background: white;
+  border: 2px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #374151;
+  width: 230px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.departureItem:hover {
+  border-color: #2d3436;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.15);
+  transform: translateY(-2px);
+}
+
+.departureItem.selected {
+  border-color: #2d3436;
+  transform: translateY(-2px);
+}
+
+.departureLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.departureRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
 }
 
 .departureDate {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  color: #111827;
+  margin-bottom: 0.25rem;
 }
+.departureSeats{
+  font-size: 0.85rem;
+}
+  
+
 
 .departureDow {
-  opacity: 0.9;
-  margin-bottom: 0.75rem;
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 
-.departureSeats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
+.departureStatus {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.statusAlmostFull {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.statusAvailable {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.bookButton.disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.bookButton.disabled:hover {
+  background: #d1d5db;
 }
 
 .recurringInfo {
@@ -232,7 +284,7 @@
 }
 
 .dayLabel {
-  background: #667eea;
+  background: #040404;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -415,4 +467,15 @@
   .dayLabel {
     align-self: flex-start;
   }
+}
+
+/* Disabled button styles */
+.bookButton.disabled {
+  background: #d1d5db !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+}
+
+.bookButton.disabled:hover {
+  background: #d1d5db !important;
 }

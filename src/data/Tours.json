@@ -505,9 +505,9 @@
     "slug": "tour-dubai-abu-dhabi-5n4d",
     "type": "5 ngày 4 đêm",
     "price": {
-      "amount": 28900000,
+      "amount": 38900000,
       "currency": "VND",
-      "display": "28.900.000 VNĐ"
+      "display": "38.900.000 VNĐ"
     },
     "rating_summary": { "average": 4.8, "count": 82 },
     "upcoming_departures": [
@@ -536,7 +536,7 @@
     ],
     "policy": {
       "included": ["Visa Dubai", "Vé máy bay", "Khách sạn 4-5 sao", "Ăn uống theo chương trình"],
-      "excluded": ["Tiền Tip (8 USD/ngày)", "Vé lên đỉnh tháp Burj Khalifa"]
+      "excluded": [ "Vé lên đỉnh tháp Burj Khalifa"]
     },
     "images": [{ "url": "/images/tour/dubai.webp", "caption": "Sheikh Zayed Grand Mosque Abu Dhabi" }]
   },

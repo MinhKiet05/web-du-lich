@@ -1,0 +1,284 @@
+/* CSS cho booking modal */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.bookingModal {
+  background: white;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  color: #111827;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.modalContent {
+  padding: 1.5rem;
+}
+
+.tourSummary {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.tourImage {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.tourInfo h4 {
+  margin: 0 0 0.5rem 0;
+  color: #111827;
+  font-size: 1rem;
+}
+
+.tourInfo p {
+  margin: 0.25rem 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.tourPrice {
+  font-weight: bold !important;
+  color: #dc2626 !important;
+}
+
+.formSection {
+  margin-bottom: 1.5rem;
+}
+
+.formSection h4 {
+  margin: 0 0 1rem 0;
+  color: #111827;
+  font-size: 1rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup:last-child {
+  grid-column: 1 / -1;
+}
+
+.formGroup label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.formGroup input,
+.formSection textarea {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.formGroup input:focus,
+.formSection textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.participantGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.participantItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.participantInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.participantInfo span:first-child {
+  font-weight: 500;
+  color: #111827;
+}
+
+.participantInfo span:nth-child(2) {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.price {
+  font-weight: bold;
+  color: #dc2626;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantityControl button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.quantityControl button:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.quantityControl span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.totalSection {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.totalAmount {
+  color: #dc2626;
+  font-size: 1.2rem;
+}
+
+.modalActions {
+  margin-top: 1.5rem;
+}
+
+.confirmButton {
+  width: 100%;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.confirmButton:disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Disabled button styles */
+.bookButton.disabled {
+  background: #d1d5db !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+}
+
+.bookButton.disabled:hover {
+  background: #d1d5db !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bookingModal {
+    margin: 0;
+    border-radius: 0;
+    max-height: 100vh;
+    width: 100%;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .participantItem {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .quantityControl {
+    justify-content: center;
+  }
+}
