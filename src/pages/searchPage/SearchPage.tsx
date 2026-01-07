@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -57,7 +57,7 @@ const extractDestination = (specs: Array<{ k: string; v: string }>): string => {
 };
 
 export default function SearchPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [selectedDate, setSelectedDate] = useState(searchParams.get('date') || '');
   const [allTours, setAllTours] = useState<Tour[]>([]);
@@ -128,6 +128,15 @@ export default function SearchPage() {
       maxDays
     };
   }, [allTours]);
+
+  // Watch for URL parameter changes from header search
+  useEffect(() => {
+    const queryFromUrl = searchParams.get('q') || '';
+    const dateFromUrl = searchParams.get('date') || '';
+    
+    setSearchQuery(queryFromUrl);
+    setSelectedDate(dateFromUrl);
+  }, [searchParams]);
 
   // Load tất cả tours khi mount
   useEffect(() => {
@@ -232,16 +241,6 @@ export default function SearchPage() {
     setDisplayedTours(filtered.slice(0, toursPerPage));
     setCurrentPage(1);
   }, [allTours, searchQuery, selectedDate, filters, sortBy]);
-
-  const handleSearch = async () => {
-    if (!searchQuery && !selectedDate) return;
-    
-    // Cập nhật URL params
-    const params = new URLSearchParams();
-    if (searchQuery) params.set('q', searchQuery);
-    if (selectedDate) params.set('date', selectedDate);
-    setSearchParams(params);
-  };
 
   const loadMoreTours = () => {
     const nextPage = currentPage + 1;
