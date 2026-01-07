@@ -66,6 +66,7 @@ export default function SearchPage() {
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortBy, setSortBy] = useState('latest');
   const toursPerPage = 6;
 
   // Filter states
@@ -210,10 +211,27 @@ export default function SearchPage() {
       });
     }
 
+    // Sort tours
+    switch (sortBy) {
+      case 'price-low':
+        filtered.sort((a, b) => (a.price?.amount || 0) - (b.price?.amount || 0));
+        break;
+      case 'price-high':
+        filtered.sort((a, b) => (b.price?.amount || 0) - (a.price?.amount || 0));
+        break;
+      case 'rating':
+        filtered.sort((a, b) => (b.rating_summary?.average || 0) - (a.rating_summary?.average || 0));
+        break;
+      case 'latest':
+      default:
+        // Keep original order (newest first)
+        break;
+    }
+
     setTours(filtered);
     setDisplayedTours(filtered.slice(0, toursPerPage));
     setCurrentPage(1);
-  }, [allTours, searchQuery, selectedDate, filters]);
+  }, [allTours, searchQuery, selectedDate, filters, sortBy]);
 
   const handleSearch = async () => {
     if (!searchQuery && !selectedDate) return;
@@ -448,41 +466,16 @@ export default function SearchPage() {
 
           {/* Main Content */}
           <main className={styles.resultsSection}>
-            <form onSubmit={handleSubmit} className={styles.searchForm}>
-              <div className={styles.searchInputs}>
-                <div className={styles.searchField}>
-                  <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
-                  <input
-                    type="text"
-                    placeholder="Tìm theo tên tour"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className={styles.searchInput}
-                  />
-                </div>
-                
-                <div className={styles.searchField}>
-                  <FontAwesomeIcon icon={faCalendarDays} className={styles.searchIcon} />
-                  <input
-                    type="date"
-                    placeholder="Chọn ngày khởi hành"
-                    value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
-                    className={styles.dateInput}
-                  />
-                </div>
-                
-                <button type="submit" className={styles.searchButton}>
-                  Tìm kiếm
-                </button>
-              </div>
-            </form>
 
             {/* Cục sắp xếp mới nhất đó cha */}
             <div className={styles.resultsToolbar}>
               <div className={styles.sortOptions}>
                 <span>Sắp xếp:</span>
-                <select className={styles.sortSelect}>
+                <select 
+                  className={styles.sortSelect}
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
                   <option value="latest">Mới nhất</option>
                   <option value="price-low">Giá thấp → cao</option>
                   <option value="price-high">Giá cao → thấp</option>
