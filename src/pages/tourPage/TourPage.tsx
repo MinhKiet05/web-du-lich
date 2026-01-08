@@ -1,5 +1,4 @@
 import { useState, useRef, useMemo } from 'react';
-import { useAuth } from '../../context/AuthContext';
 import { useTours } from '../../hooks/useTours';
 import Card from '../../components/card/Card';
 import styles from './TourPage.module.css';

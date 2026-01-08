@@ -5,15 +5,15 @@
 
 .container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 .mainContent{
   margin-bottom: 1rem;
   padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header{
@@ -100,7 +100,7 @@
 }
 .tourList{
   display: flex;
-  gap: 6rem;
+  gap: 4rem ;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1rem 0;
@@ -138,6 +138,9 @@
   .header h1{
     font-size: 1.5rem;
   }
+  .tourList{
+  gap: 5rem ;
+  }
 }
 @media (max-width: 480px) {
   .tourSection{
@@ -151,5 +154,8 @@
   }
   .header h1{
     font-size:1.5rem;
+  }
+  .tourList{
+  gap: 7rem ;
   }
 }
