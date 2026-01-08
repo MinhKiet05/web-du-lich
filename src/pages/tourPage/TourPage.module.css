@@ -4,18 +4,152 @@
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1rem;
 }
-
-.tourPage h1 {
-  font-size: 2rem;
-  color: #333;
+.mainContent{
   margin-bottom: 1rem;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
+.header{
+  margin: 1rem;
+}
+.header h1{
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
 .tourPage p {
   color: #666;
   font-size: 1.1rem;
+}
+.scrollBtn{
+  position:absolute;
+  top: 50%;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  outline: none;
+  background: white;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  font-size: 1.2rem;
+  color: #000;
+  transition: all 0.3s ease;
+  transform: translateY(-50%);
+}
+.scrollBtn:hover{
+  background-color: #000;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.scrollBtn:focus{
+  outline: none;
+}
+.scrollBtnLeft{
+  color: #000;
+  left: 0;
+}
+.scrollBtnRight{
+  right: 0;
+}
+.filterTabs{
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tab{
+  padding: 1rem 1.5rem;
+  border:none;
+  border-radius: 16px;
+  display: block;
+  background: #040404;
+  cursor: pointer;
+  color: #ddd;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-weight: 600;
+
+}
+.tab:hover{
+  background-color: #2d3436;
+  color: white;
+   box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  transform: translateY(-5px) scale(1);
+}
+.tourSection{
+  position:relative;
+  padding: 0 50px;
+}
+.tourList{
+  display: flex;
+  gap: 6rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 0;
+}
+.tourList::-webkit-scrollbar {
+  display: none;
+}
+.cardWrapper{
+  flex: 0 0 auto;
+  width: 320px;
+}
+@media (max-width: 768px) {
+  .container{
+    padding: 0 1rem;
+  }
+  .mainContent{
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+  .tourSection{
+    padding: 0 40px;
+  }
+  .scrollBtn{
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  .tab{
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .cardWrapper{
+    width: 300px;
+  }
+  .header h1{
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .tourSection{
+    padding: 0 20px;
+  }
+  .cardWrapper{
+    width: 250px;
+  }
+  .tab{
+    padding: 0.2rem 0.6rem;
+  }
+  .header h1{
+    font-size:1.5rem;
+  }
 }
