@@ -119,6 +119,18 @@ export default function DetailPage() {
     children: 0,
     special_requests: ''
   });
+  const [validationErrors, setValidationErrors] = useState({
+    phone: '',
+    identity_card: ''
+  });
+  const [touched, setTouched] = useState({
+    phone: false,
+    identity_card: false
+  });
+  
+  const phoneRegex = /^0\d{9}$/;
+  const cccdRegex = /^(0[0-8]\d|09[0-6])(?=[0-9])\d{1}\d{2}\d{6}$/;
+  
   const { currentUser, login } = useAuth();
 
   useEffect(() => {
@@ -149,6 +161,14 @@ export default function DetailPage() {
     // Cuộn lên đầu trang khi component mount
     window.scrollTo(0, 0);
   }, [id]);
+
+  // Load tên người dùng khi đã đăng nhập
+  useEffect(() => {
+    if (currentUser && !bookingForm.full_name) {
+      const displayName = currentUser.displayName || currentUser.email?.split('@')[0] || '';
+      setBookingForm(prev => ({ ...prev, full_name: displayName }));
+    }
+  }, [currentUser, bookingForm.full_name]);
 
   // Helper functions
   const getDaysNights = (type: string) => {
@@ -195,6 +215,52 @@ export default function DetailPage() {
     const adultPrice = tour.price.amount;
     const childPrice = tour.price.amount * 0.5; // Giả sử trẻ em 50% giá người lớn
     return (bookingForm.adults * adultPrice) + (bookingForm.children * childPrice);
+  };
+
+  const getTotalParticipants = () => {
+    return bookingForm.adults + bookingForm.children;
+  };
+
+  const getAvailableSeats = () => {
+    return selectedDeparture ? selectedDeparture.seats_left : 0;
+  };
+
+  const validatePhone = (phone: string) => {
+    if (!phone) return 'Số điện thoại là bắt buộc';
+    if (!phoneRegex.test(phone)) return 'Số điện thoại phải có 10 số và bắt đầu bằng 0';
+    return '';
+  };
+
+  const validateCCCD = (cccd: string) => {
+    if (!cccd) return 'CCCD là bắt buộc';
+    if (!cccdRegex.test(cccd)) return 'CCCD không đúng định dạng';
+    return '';
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setBookingForm({...bookingForm, phone: value});
+    setValidationErrors({...validationErrors, phone: validatePhone(value)});
+  };
+
+  const handleCCCDChange = (value: string) => {
+    setBookingForm({...bookingForm, identity_card: value});
+    setValidationErrors({...validationErrors, identity_card: validateCCCD(value)});
+  };
+
+  const handlePhoneBlur = () => {
+    setTouched({...touched, phone: true});
+  };
+
+  const handleCCCDBlur = () => {
+    setTouched({...touched, identity_card: true});
+  };
+
+  const isFormValid = () => {
+    return bookingForm.full_name && 
+           bookingForm.phone && 
+           bookingForm.identity_card &&
+           !validatePhone(bookingForm.phone) &&
+           !validateCCCD(bookingForm.identity_card);
   };
 
   const handleSubmitBooking = async () => {
@@ -504,7 +570,7 @@ export default function DetailPage() {
                       <h4>Thông tin liên hệ</h4>
                       <div className={modalStyles.formGrid}>
                         <div className={modalStyles.formGroup}>
-                          <label>Họ và tên *</label>
+                          <label>Họ và tên <span style={{color: '#dc2626'}}>*</span></label>
                           <input 
                             type="text"
                             value={bookingForm.full_name}
@@ -514,30 +580,70 @@ export default function DetailPage() {
                           />
                         </div>
                         <div className={modalStyles.formGroup}>
-                          <label>Số điện thoại *</label>
+                          <label>Số điện thoại <span style={{color: '#dc2626'}}>*</span></label>
                           <input 
                             type="tel"
                             value={bookingForm.phone}
-                            onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
+                            onChange={(e) => handlePhoneChange(e.target.value)}
+                            onBlur={handlePhoneBlur}
                             placeholder="0901234567"
                             required
+                            style={{
+                              borderColor: (touched.phone && validationErrors.phone) ? '#dc2626' : undefined
+                            }}
                           />
+                          {(touched.phone && validationErrors.phone) && (
+                            <span style={{
+                              color: '#dc2626',
+                              fontSize: '0.8rem',
+                              marginTop: '0.25rem',
+                              display: 'block'
+                            }}>
+                              {validationErrors.phone}
+                            </span>
+                          )}
                         </div>
                         <div className={modalStyles.formGroup}>
-                          <label>CCCD/CMND *</label>
+                          <label>CCCD <span style={{color: '#dc2626'}}>*</span></label>
                           <input 
                             type="text"
                             value={bookingForm.identity_card}
-                            onChange={(e) => setBookingForm({...bookingForm, identity_card: e.target.value})}
+                            onChange={(e) => handleCCCDChange(e.target.value)}
+                            onBlur={handleCCCDBlur}
                             placeholder="Số giấy tờ tùy thân"
                             required
+                            style={{
+                              borderColor: (touched.identity_card && validationErrors.identity_card) ? '#dc2626' : undefined
+                            }}
                           />
+                          {(touched.identity_card && validationErrors.identity_card) && (
+                            <span style={{
+                              color: '#dc2626',
+                              fontSize: '0.8rem',
+                              marginTop: '0.25rem',
+                              display: 'block'
+                            }}>
+                              {validationErrors.identity_card}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
 
                     <div className={modalStyles.formSection}>
-                      <h4>Số lượng khách</h4>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                        <h4>Số lượng khách</h4>
+                        <span style={{ 
+                          backgroundColor: getAvailableSeats() <= 6 ? '#fee2e2' : '#dcfce7',
+                          color: getAvailableSeats() <= 6 ? '#dc2626' : '#16a34a',
+                          padding: '0.25rem 0.75rem',
+                          borderRadius: '6px',
+                          fontSize: '0.8rem',
+                          fontWeight: '500'
+                        }}>
+                          Còn {getAvailableSeats()} chỗ trống
+                        </span>
+                      </div>
                       <div className={modalStyles.participantGrid}>
                         <div className={modalStyles.participantItem}>
                           <div className={modalStyles.participantInfo}>
@@ -549,13 +655,30 @@ export default function DetailPage() {
                             <button 
                               type="button"
                               onClick={() => setBookingForm({...bookingForm, adults: Math.max(1, bookingForm.adults - 1)})}
+                              disabled={bookingForm.adults <= 1}
+                              style={{
+                                opacity: bookingForm.adults <= 1 ? 0.5 : 1,
+                                cursor: bookingForm.adults <= 1 ? 'not-allowed' : 'pointer'
+                              }}
                             >
                               -
                             </button>
                             <span>{bookingForm.adults}</span>
                             <button 
                               type="button"
-                              onClick={() => setBookingForm({...bookingForm, adults: bookingForm.adults + 1})}
+                              onClick={() => {
+                                const newAdults = bookingForm.adults + 1;
+                                if (newAdults + bookingForm.children <= getAvailableSeats()) {
+                                  setBookingForm({...bookingForm, adults: newAdults});
+                                } else {
+                                  alert(`Chỉ còn ${getAvailableSeats()} chỗ trống cho tour này!`);
+                                }
+                              }}
+                              disabled={getTotalParticipants() >= getAvailableSeats()}
+                              style={{
+                                opacity: getTotalParticipants() >= getAvailableSeats() ? 0.5 : 1,
+                                cursor: getTotalParticipants() >= getAvailableSeats() ? 'not-allowed' : 'pointer'
+                              }}
                             >
                               +
                             </button>
@@ -572,19 +695,49 @@ export default function DetailPage() {
                             <button 
                               type="button"
                               onClick={() => setBookingForm({...bookingForm, children: Math.max(0, bookingForm.children - 1)})}
+                              disabled={bookingForm.children <= 0}
+                              style={{
+                                opacity: bookingForm.children <= 0 ? 0.5 : 1,
+                                cursor: bookingForm.children <= 0 ? 'not-allowed' : 'pointer'
+                              }}
                             >
                               -
                             </button>
                             <span>{bookingForm.children}</span>
                             <button 
                               type="button"
-                              onClick={() => setBookingForm({...bookingForm, children: bookingForm.children + 1})}
+                              onClick={() => {
+                                const newChildren = bookingForm.children + 1;
+                                if (bookingForm.adults + newChildren <= getAvailableSeats()) {
+                                  setBookingForm({...bookingForm, children: newChildren});
+                                } else {
+                                  alert(`Chỉ còn ${getAvailableSeats()} chỗ trống cho tour này!`);
+                                }
+                              }}
+                              disabled={getTotalParticipants() >= getAvailableSeats()}
+                              style={{
+                                opacity: getTotalParticipants() >= getAvailableSeats() ? 0.5 : 1,
+                                cursor: getTotalParticipants() >= getAvailableSeats() ? 'not-allowed' : 'pointer'
+                              }}
                             >
                               +
                             </button>
                           </div>
                         </div>
                       </div>
+                      {getTotalParticipants() > 0 && (
+                        <div style={{
+                          marginTop: '0.75rem',
+                          padding: '0.75rem',
+                          backgroundColor: '#f8fafc',
+                          borderRadius: '6px',
+                          fontSize: '0.9rem',
+                          color: '#475569',
+                          textAlign: 'center'
+                        }}>
+                          Đã chọn: <strong>{getTotalParticipants()}</strong> người / <strong>{getAvailableSeats()}</strong> chỗ còn trống
+                        </div>
+                      )}
                     </div>
 
                     <div className={modalStyles.formSection}>
@@ -610,7 +763,7 @@ export default function DetailPage() {
                       <button 
                         className={modalStyles.confirmButton}
                         onClick={handleSubmitBooking}
-                        disabled={!bookingForm.full_name || !bookingForm.phone || !bookingForm.identity_card}
+                        disabled={!isFormValid()}
                       >
                         Tiếp tục thanh toán ➜
                       </button>

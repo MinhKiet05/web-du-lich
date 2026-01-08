@@ -17,7 +17,7 @@
 .bookingModal {
   background: white;
   border-radius: 12px;
-  max-width: 600px;
+  max-width: 900px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -129,13 +129,19 @@
   border-radius: 6px;
   font-size: 0.9rem;
   transition: border-color 0.2s ease;
-}
+  background-color: #f9fafb;
+  color: black;
 
+}
+.formSection textarea{
+  resize: vertical;
+  width: 100%;
+}
 .formGroup input:focus,
 .formSection textarea:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #040404;
+  box-shadow: 0 0 0 3px rgba(38, 38, 38, 0.1);
 }
 
 .participantGrid {
@@ -178,17 +184,17 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  color: black;
 }
 
 .quantityControl button {
-  width: 32px;
-  height: 32px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   background: white;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.2s ease;
+  color: black;
 }
 
 .quantityControl button:hover {
@@ -227,7 +233,7 @@
 
 .confirmButton {
   width: 100%;
-  background: #3b82f6;
+  background: #040404;
   color: white;
   border: none;
   padding: 1rem 1.5rem;
@@ -239,7 +245,7 @@
 }
 
 .confirmButton:hover:not(:disabled) {
-  background: #2563eb;
+  background: #2d3436;
 }
 
 .confirmButton:disabled {

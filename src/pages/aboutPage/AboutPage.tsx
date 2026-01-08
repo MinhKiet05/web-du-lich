@@ -15,7 +15,8 @@ import p2 from './2.png';
 import p3 from './3.png';
 import p4 from './4.png';
 import p5 from './5.png';
-
+import bao from './bao.webp';
+import kiet from './kiet.webp';
 // Đăng ký Plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -196,7 +197,7 @@ export default function AboutPage() {
         <div className={styles.teamGrid}>
           <div className={styles.teamCard}>
             <div className={styles.memberImage}>
-              <img src={backgroundImage}alt="" />
+              <img src={kiet}alt="" />
             </div>
             <div className={styles.memberInfo}>
               <div className={styles.nameRow}>
@@ -212,7 +213,7 @@ export default function AboutPage() {
           </div>
           <div className={styles.teamCard}>
             <div className={styles.memberImage}>
-              <img src={backgroundImage}alt="" />
+              <img src={bao}alt="" />
             </div>
             <div className={styles.memberInfo}>
               <div className={styles.nameRow}>

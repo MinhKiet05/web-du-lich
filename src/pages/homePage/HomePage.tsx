@@ -43,42 +43,6 @@ export default function HomePage() {
   // Lấy 6 tours đầu tiên để hiển thị
   const featuredTours = tours.slice(0, 6);
 
-  // Loading state
-  if (loading) {
-    return (
-      <div className={styles.homePage}>
-        <section style={{ backgroundImage: `url(${backgroundImage})` }} className={styles.heroSection}>
-          <div className={styles.inSection}>
-            <div className={styles.content}>
-              <div className={styles.header}>
-                <h1>Đang tải tours...</h1>
-                <p>Vui lòng đợi trong giây lát.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
-
-  // Error state
-  if (error) {
-    return (
-      <div className={styles.homePage}>
-        <section style={{ backgroundImage: `url(${backgroundImage})` }} className={styles.heroSection}>
-          <div className={styles.inSection}>
-            <div className={styles.content}>
-              <div className={styles.header}>
-                <h1>Lỗi tải dữ liệu</h1>
-                <p>Không thể tải tours. Vui lòng thử lại sau.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.homePage}>
       <section style={{ backgroundImage: `url(${backgroundImage})` }} className={styles.heroSection} >
@@ -144,11 +108,26 @@ export default function HomePage() {
       <section className={styles.toursSection}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Tour Hot Nhất</h2>
-          <div className={styles.toursGrid}>
-            {featuredTours.map((tour) => (
-              <Card key={tour._id} tour={tour} />
-            ))}
-          </div>
+          
+          {loading && (
+            <div style={{ textAlign: 'center', padding: '2rem' }}>
+              <p>Đang tải tours...</p>
+            </div>
+          )}
+          
+          {error && (
+            <div style={{ textAlign: 'center', padding: '2rem' }}>
+              <p>Không thể tải tours. Vui lòng thử lại sau.</p>
+            </div>
+          )}
+          
+          {!loading && !error && (
+            <div className={styles.toursGrid}>
+              {featuredTours.map((tour) => (
+                <Card key={tour._id} tour={tour} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>
