@@ -477,7 +477,7 @@
       { "k": "transport", "v": "Máy bay khứ hồi (Vietnam Airlines/T'way)" },
       { "k": "hotel_rating", "v": "4 sao tiêu chuẩn quốc tế" },
       { "k": "location_start", "v": "TP.HCM (Sân bay Tân Sơn Nhất)" },
-      { "k": "location_end", "v": "Seoul (Sân bay Incheon)" }
+      { "k": "location_end", "v": "Seoul" }
     ],
     "pickup_location": {
       "location_id": "loc_tan_son_nhat_intl",
