@@ -250,19 +250,19 @@ function BookingDetailModal({ booking, isOpen, onClose }: BookingDetailModalProp
 
           {/* 2. Thông tin Tour đã đặt */}
           <div className={styles.section}>
-            <h3>🏖️ Thông tin Tour đã đặt</h3>
+            <h3>Thông tin Tour đã đặt</h3>
             <div className={styles.tourInfoBox}>
               <h4>{booking.tour_snapshot?.tour_name || 'N/A'}</h4>
               <div className={styles.tourDetails}>
-                <p><strong>📅 Ngày khởi hành:</strong> {booking.tour_snapshot?.departure_date ? formatDate(booking.tour_snapshot.departure_date) : 'N/A'}</p>
-                <p><strong>💰 Giá gốc:</strong> {formatCurrency(booking.tour_snapshot?.base_price || 0)} / khách</p>
+                <p><strong>Ngày khởi hành:</strong> {booking.tour_snapshot?.departure_date ? formatDate(booking.tour_snapshot.departure_date) : 'N/A'}</p>
+                <p><strong>Giá gốc:</strong> {formatCurrency(booking.tour_snapshot?.base_price || 0)} / khách</p>
               </div>
             </div>
           </div>
 
           {/* 3. Thông tin hành khách */}
           <div className={styles.section}>
-            <h3>👥 Thông tin hành khách</h3>
+            <h3>Thông tin hành khách</h3>
             <div className={styles.passengerInfo}>
               <div className={styles.leadPassenger}>
                 <h4>Người đại diện</h4>
@@ -303,7 +303,7 @@ function BookingDetailModal({ booking, isOpen, onClose }: BookingDetailModalProp
 
               {(booking.special_requests || []).length > 0 && (
                 <div className={styles.specialRequests}>
-                  <h4>📝 Ghi chú đặc biệt</h4>
+                  <h4>Ghi chú đặc biệt</h4>
                   {(booking.special_requests || []).map((request, index) => (
                     <p key={index} className={styles.requestItem}>
                       <strong>{request?.k || 'N/A'}:</strong> {request?.v || 'N/A'}
@@ -316,7 +316,7 @@ function BookingDetailModal({ booking, isOpen, onClose }: BookingDetailModalProp
 
           {/* 4. Chi tiết thanh toán */}
           <div className={styles.section}>
-            <h3>💳 Chi tiết thanh toán</h3>
+            <h3>Chi tiết thanh toán</h3>
             <div className={styles.billingDetails}>
               <div className={styles.billingRow}>
                 <span>Tạm tính (Sub-total):</span>
@@ -339,7 +339,7 @@ function BookingDetailModal({ booking, isOpen, onClose }: BookingDetailModalProp
 
           {/* 5. Lịch sử đơn hàng - Timeline */}
           <div className={styles.section}>
-            <h3>📋 Lịch sử đơn hàng</h3>
+            <h3>Lịch sử đơn hàng</h3>
             <div className={styles.timeline}>
               {(booking.status_history || []).map((status, index) => (
                 <div key={index} className={styles.timelineItem}>
@@ -673,7 +673,7 @@ export default function MyTours() {
             
             {isIndexError && (
               <div className={styles.indexWarning}>
-                <h3>⚠️ Cần tạo Firebase Index</h3>
+                <h3>Cần tạo Firebase Index</h3>
                 <p>Để query hoạt động tối ưu, hãy tạo composite index cho Firestore:</p>
                 <div className={styles.indexInstructions}>
                   <p><strong>Collection:</strong> bookings</p>
@@ -688,7 +688,7 @@ export default function MyTours() {
                     rel="noopener noreferrer"
                     className={styles.indexLink}
                   >
-                    🔗 Tạo Index tự động
+                    Tạo Index tự động
                   </a>
                 </div>
               </div>
