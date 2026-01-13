@@ -364,6 +364,34 @@ const ModalBookedTour: React.FC<ModalBookedTourProps> = ({
                 </div>
               ))}
               
+              {/* Next step indicator for PAID status */}
+              {booking.billing?.payment_status === 'PAID' && (() => {
+                const departureDate = new Date(booking.tour_snapshot?.departure_date || '');
+                const currentDate = new Date();
+                const isPastDeparture = currentDate > departureDate;
+                
+                return (
+                  <div className={styles.timelineItem + ' ' + (isPastDeparture ? styles.timelineCompleted : styles.timelineNext)}>
+                    <div className={isPastDeparture ? styles.timelineDot : styles.timelineDotPending}></div>
+                    <div className={styles.timelineContent}>
+                      <div className={styles.timelineHeader}>
+                        <span className={isPastDeparture ? styles.completedStep : styles.nextStep}>
+                          <FontAwesomeIcon icon={isPastDeparture ? faCheck : faClock} /> 
+                          {isPastDeparture ? 'Tour đã kết thúc' : 'Đợi đến ngày khởi hành'}
+                        </span>
+                      </div>
+                      <p className={styles.timelineNote}>
+                        <FontAwesomeIcon icon={faLightbulb} /> 
+                        {isPastDeparture 
+                          ? <strong>Tour đã hoàn thành vào ngày {formatDate(booking.tour_snapshot?.departure_date || '')}</strong>
+                          : <strong>Vui lòng chờ đến ngày khởi hành: {formatDate(booking.tour_snapshot?.departure_date || '')}</strong>
+                        }
+                      </p>
+                    </div>
+                  </div>
+                );
+              })()}
+              
               {/* Next step indicator for PENDING status */}
               {booking.billing?.payment_status === 'PENDING' && (
                 <div className={styles.timelineItem + ' ' + styles.timelineNext}>

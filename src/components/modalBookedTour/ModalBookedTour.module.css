@@ -545,6 +545,16 @@
   font-style: italic;
 }
 
+.completedStep {
+  color: #059669;
+  font-weight: 600;
+}
+
+.timelineCompleted .timelineContent {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border: 1px solid #10b981;
+}
+
 .timelineDate {
   color: #6b7280;
   font-size: 0.85rem;
@@ -559,6 +569,10 @@
 
 .timelineNext .timelineNote {
   color: #78350f;
+}
+
+.timelineCompleted .timelineNote {
+  color: #065f46;
 }
 
 /* Responsive Design */

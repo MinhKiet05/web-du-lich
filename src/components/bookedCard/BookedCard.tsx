@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './bookedCard.module.css';
+import styles from './BookedCard.module.css';
 
 // Types
 interface Billing {
