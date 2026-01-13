@@ -4,6 +4,8 @@ import { db } from '../../firebase/config';
 import { useAuth } from '../../context/AuthContext';
 import toursData from '../../data/Tours.json';
 import styles from './MyTours.module.css';
+import BookedCard from '../../components/bookedCard/BookedCard';
+import ModalBookedTour from '../../components/modalBookedTour/ModalBookedTour';
 
 // Helper function to summarize participants
 const getParticipantsSummary = (participants: Participant[]) => {
@@ -37,55 +39,6 @@ const getParticipantsSummary = (participants: Participant[]) => {
   }
 
   return parts.length > 0 ? parts.join(', ') : 'Chưa có thông tin';
-};
-
-// Helper function to get detailed participants summary for modal
-const getDetailedParticipantsSummary = (participants: Participant[]) => {
-  console.log('getDetailedParticipantsSummary called with:', participants);
-  
-  if (!participants || participants.length === 0) {
-    return {
-      breakdown: 'Chưa có thông tin',
-      total: 'Tổng: 0 người'
-    };
-  }
-
-  let adults = 0;
-  let children = 0;
-
-  participants.forEach(participant => {
-    const type = participant?.type || '';
-    const qty = participant?.qty || 0;
-    
-    console.log('Processing participant for detailed:', { type, qty });
-    
-    if (type === 'Người lớn') {
-      adults += qty;
-    } else if (type === 'Trẻ em') {
-      children += qty;
-    } else {
-      // Fallback cho các case khác
-      adults += qty;
-    }
-  });
-
-  console.log('Final detailed summary:', { adults, children });
-
-  const parts = [];
-  if (adults > 0) {
-    parts.push(`${adults} người lớn`);
-  }
-  if (children > 0) {
-    parts.push(`${children} trẻ em`);
-  }
-
-  const breakdown = parts.length > 0 ? parts.join(', ') : 'Chưa có thông tin';
-  const total = adults + children;
-  
-  return {
-    breakdown,
-    total: `Tổng: ${total} người`
-  };
 };
 
 // Types
@@ -160,222 +113,6 @@ interface Tour {
   images: Array<{ url: string; caption: string }>;
 }
 
-interface BookingDetailModalProps {
-  booking: Booking | null;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-function BookingDetailModal({ booking, isOpen, onClose }: BookingDetailModalProps) {
-  if (!isOpen || !booking) return null;
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND'
-    }).format(amount);
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('vi-VN', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    });
-  };
-
-  const formatDateTime = (dateString: string) => {
-    return new Date(dateString).toLocaleString('vi-VN', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'PAID': return '#22c55e';
-      case 'PENDING': return '#f59e0b';
-      case 'FAILED': return '#ef4444';
-      case 'REFUNDED': return '#6b7280';
-      default: return '#6b7280';
-    }
-  };
-
-  const getStatusLabel = (status: string) => {
-    switch (status) {
-      case 'PAID': return 'Đã thanh toán';
-      case 'PENDING': return 'Chờ thanh toán';
-      case 'FAILED': return 'Thanh toán thất bại';
-      case 'REFUNDED': return 'Đã hoàn tiền';
-      default: return status;
-    }
-  };
-
-  const generateBookingCode = (bookingId: string, createdAt: string) => {
-    const year = new Date(createdAt).getFullYear();
-    const shortId = bookingId.substring(0, 8).toUpperCase();
-    return `BOOKING_${year}_${shortId}`;
-  };
-
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.modalHeader}>
-          <h2>Chi tiết đặt tour</h2>
-          <button className={styles.closeButton} onClick={onClose}>&times;</button>
-        </div>
-        
-        <div className={styles.modalBody}>
-          {/* 1. Trạng thái đơn hàng - Nổi bật nhất */}
-          <div className={styles.statusSection}>
-            <div className={styles.mainStatus}>
-              <div 
-                className={styles.statusBadgeLarge}
-                style={{ 
-                  backgroundColor: getStatusColor(booking.billing?.payment_status || 'UNKNOWN'),
-                  color: 'white'
-                }}
-              >
-                {getStatusLabel(booking.billing?.payment_status || 'UNKNOWN')}
-              </div>
-            </div>
-            <div className={styles.bookingInfo}>
-              <p><strong>Mã đặt chỗ:</strong> {generateBookingCode(booking.id, booking.metadata?.created_at || '')}</p>
-              <p><strong>Ngày đặt:</strong> {booking.metadata?.created_at ? formatDate(booking.metadata.created_at) : 'N/A'}</p>
-            </div>
-          </div>
-
-          {/* 2. Thông tin Tour đã đặt */}
-          <div className={styles.section}>
-            <h3>Thông tin Tour đã đặt</h3>
-            <div className={styles.tourInfoBox}>
-              <h4>{booking.tour_snapshot?.tour_name || 'N/A'}</h4>
-              <div className={styles.tourDetails}>
-                <p><strong>Ngày khởi hành:</strong> {booking.tour_snapshot?.departure_date ? formatDate(booking.tour_snapshot.departure_date) : 'N/A'}</p>
-                <p><strong>Giá gốc:</strong> {formatCurrency(booking.tour_snapshot?.base_price || 0)} / khách</p>
-              </div>
-            </div>
-          </div>
-
-          {/* 3. Thông tin hành khách */}
-          <div className={styles.section}>
-            <h3>Thông tin hành khách</h3>
-            <div className={styles.passengerInfo}>
-              <div className={styles.leadPassenger}>
-                <h4>Người đại diện</h4>
-                <p><strong>{booking.customer_details?.lead_passenger?.full_name || 'N/A'}</strong> - {booking.customer_details?.lead_passenger?.phone || 'N/A'}</p>
-                <p><strong>Số CCCD:</strong> {booking.customer_details?.lead_passenger?.identity_card || 'N/A'}</p>
-              </div>
-
-              <div className={styles.participantsSummary}>
-                <h4>Tổng số người tham gia</h4>
-                <div className={styles.summaryBreakdown}>
-                  {(() => {
-                    const summaryData = getDetailedParticipantsSummary((booking.customer_details as any)?.participants || []);
-                    return (
-                      <>
-                        <p className={styles.summaryText}>{summaryData.breakdown}</p>
-                        <p className={styles.summaryTotal}>{summaryData.total}</p>
-                      </>
-                    );
-                  })()}
-                </div>
-              </div>
-
-              <div className={styles.participantsList}>
-                <h4>Chi tiết thành viên</h4>
-                {(booking.participants || []).map((participant, index) => (
-                  <div key={index} className={styles.participantItem}>
-                    <div className={styles.participantType}>
-                      <span className={styles.typeLabel}>{participant?.type || 'N/A'}</span>
-                      <span className={styles.quantity}>x{participant?.qty || 0}</span>
-                    </div>
-                    <div className={styles.participantPrice}>
-                      {formatCurrency((participant?.price_at_booking || 0) * (participant?.qty || 0))}
-                      <small>({formatCurrency(participant?.price_at_booking || 0)}/người)</small>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {(booking.special_requests || []).length > 0 && (
-                <div className={styles.specialRequests}>
-                  <h4>Ghi chú đặc biệt</h4>
-                  {(booking.special_requests || []).map((request, index) => (
-                    <p key={index} className={styles.requestItem}>
-                      <strong>{request?.k || 'N/A'}:</strong> {request?.v || 'N/A'}
-                    </p>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* 4. Chi tiết thanh toán */}
-          <div className={styles.section}>
-            <h3>Chi tiết thanh toán</h3>
-            <div className={styles.billingDetails}>
-              <div className={styles.billingRow}>
-                <span>Tạm tính (Sub-total):</span>
-                <span>{formatCurrency(booking.billing?.sub_total || 0)}</span>
-              </div>
-              
-              {(booking.billing?.discount_amount || 0) > 0 && (
-                <div className={styles.billingRow}>
-                  <span>Giảm giá:</span>
-                  <span className={styles.discount}>-{formatCurrency(booking.billing?.discount_amount || 0)}</span>
-                </div>
-              )}
-              
-              <div className={styles.billingTotal}>
-                <span>Tổng cộng:</span>
-                <span className={styles.totalAmount}>{formatCurrency(booking.billing?.total_amount || 0)}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* 5. Lịch sử đơn hàng - Timeline */}
-          <div className={styles.section}>
-            <h3>Lịch sử đơn hàng</h3>
-            <div className={styles.timeline}>
-              {(booking.status_history || []).map((status, index) => (
-                <div key={index} className={styles.timelineItem}>
-                  <div className={styles.timelineDot}></div>
-                  <div className={styles.timelineContent}>
-                    <div className={styles.timelineHeader}>
-                      <strong>{status?.status || 'N/A'}</strong>
-                      <span className={styles.timelineDate}>
-                        {status?.updated_at ? formatDateTime(status.updated_at) : 'N/A'}
-                      </span>
-                    </div>
-                    <p className={styles.timelineNote}>{status?.note || 'N/A'}</p>
-                  </div>
-                </div>
-              ))}
-              
-              {/* Next step indicator for PENDING status */}
-              {booking.billing?.payment_status === 'PENDING' && (
-                <div className={styles.timelineItem + ' ' + styles.timelineNext}>
-                  <div className={styles.timelineDotPending}></div>
-                  <div className={styles.timelineContent}>
-                    <div className={styles.timelineHeader}>
-                      <span className={styles.nextStep}>Đang chờ thanh toán...</span>
-                    </div>
-                    <p className={styles.timelineNote}>Vui lòng hoàn tất thanh toán để xác nhận đặt tour</p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function MyTours() {
   const { currentUser } = useAuth();
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -386,6 +123,7 @@ export default function MyTours() {
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [firebaseStatus, setFirebaseStatus] = useState<string>('checking');
+  const [displayCount, setDisplayCount] = useState(5);
 
   // Check Firebase connection on component mount
   useEffect(() => {
@@ -575,7 +313,13 @@ export default function MyTours() {
         bookings.filter(booking => booking.billing.payment_status === selectedStatus)
       );
     }
+    // Reset display count when filters change
+    setDisplayCount(5);
   }, [bookings, selectedStatus]);
+
+  const handleLoadMore = () => {
+    setDisplayCount(prevCount => prevCount + 5);
+  };
 
   const getTourImage = (tourId: string): string => {
     const tour = toursData.find(t => t._id === tourId) as Tour | undefined;
@@ -587,15 +331,6 @@ export default function MyTours() {
       style: 'currency',
       currency: 'VND'
     }).format(amount);
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('vi-VN', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
   };
 
   const getStatusBadge = (status: string) => {
@@ -729,7 +464,6 @@ export default function MyTours() {
   return (
     <div className={styles.myToursPage}>
       <div className={styles.container}>
-        <h1>Tour đã đặt</h1>
         
         {/* Filter Section */}
         <div className={styles.filterSection}>
@@ -773,73 +507,34 @@ export default function MyTours() {
           </div>
         ) : (
           <div className={styles.toursList}>
-            {filteredBookings.map((booking) => (
-              <div key={booking.id} className={styles.tourCard}>
-                <div className={styles.tourImage}>
-                  <img
-                    src={getTourImage(booking.tour_snapshot?.tour_id || '')}
-                    alt={booking.tour_snapshot?.tour_name || 'Tour'}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/tour/default.svg';
-                    }}
-                  />
-                  <div className={styles.statusBadgeOverlay}>
-                    {getStatusBadge(booking.billing?.payment_status || 'UNKNOWN')}
-                  </div>
-                </div>
-                
-                <div className={styles.tourInfo}>
-                  <h3 className={styles.tourTitle}>{booking.tour_snapshot?.tour_name || 'Tên tour không có'}</h3>
-                  
-                  <div className={styles.tourDetails}>
-                    <div className={styles.detailRow}>
-                      <span className={styles.label}>Ngày khởi hành:</span>
-                      <span>{booking.tour_snapshot?.departure_date ? formatDate(booking.tour_snapshot.departure_date) : 'N/A'}</span>
-                    </div>
-                    
-                    <div className={styles.detailRow}>
-                      <span className={styles.label}>Khách hàng:</span>
-                      <span>{booking.customer_details?.lead_passenger?.full_name || 'N/A'}</span>
-                    </div>
-                    
-                    <div className={styles.detailRow}>
-                      <span className={styles.label}>Số lượng:</span>
-                      <span>
-                        {getParticipantsSummary((booking.customer_details as any)?.participants || [])}
-                      </span>
-                    </div>
-                    
-                    <div className={styles.detailRow}>
-                      <span className={styles.label}>Tổng tiền:</span>
-                      <span className={styles.price}>
-                        {formatCurrency(booking.billing?.total_amount || 0)}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className={styles.bookingMeta}>
-                    <small>
-                      Đặt vào: {booking.metadata?.created_at ? new Date(booking.metadata.created_at).toLocaleDateString('vi-VN') : 'N/A'}
-                    </small>
-                  </div>
-                </div>
-                
-                <div className={styles.tourActions}>
-                  <button 
-                    className={styles.detailButton}   
-                    onClick={() => openBookingDetail(booking)}
-                  >
-                    Xem chi tiết
-                  </button>
-                </div>
-              </div>
+            {filteredBookings.slice(0, displayCount).map((booking) => (
+              <BookedCard
+                key={booking.id}
+                booking={booking}
+                onCardClick={openBookingDetail}
+                getTourImage={getTourImage}
+                formatCurrency={formatCurrency}
+                getParticipantsSummary={getParticipantsSummary}
+                getStatusBadge={getStatusBadge}
+              />
             ))}
+          </div>
+        )}
+
+        {/* Load More Button */}
+        {filteredBookings.length > displayCount && (
+          <div className={styles.loadMoreContainer}>
+            <button 
+              className={styles.loadMoreButton}
+              onClick={handleLoadMore}
+            >
+              Xem thêm 
+            </button>
           </div>
         )}
       </div>
       
-      <BookingDetailModal 
+      <ModalBookedTour 
         booking={selectedBooking}
         isOpen={isModalOpen}
         onClose={closeBookingDetail}
