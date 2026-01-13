@@ -2,12 +2,15 @@
 .myToursPage {
   padding: 2rem 0;
   min-height: 60vh;
+  background-color: #f8fafc;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: calc(1200px);
   margin: 0 auto;
   padding: 0 1rem;
+  background-color: white;
+  border-radius: 12px;
 }
 
 .myToursPage h1 {
@@ -25,40 +28,299 @@
   margin-bottom: 2rem;
 }
 
-/* Tour list styles */
-.toursList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.tourCard {
+/* Filter Section */
+.filterSection {
   background: white;
+  padding: 1rem 1rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tourCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.emptyState {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: #666;
-}
-
-.emptyState svg {
-  width: 64px;
-  height: 64px;
-  color: #ccc;
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
+.filterRow label {
+  font-weight: 600;
+  color: #374151;
+  min-width: 150px;
+}
+
+.filterSelect {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-width: 200px;
+  background: white;
+  transition: border-color 0.3s ease;
+  color: black;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: #040404;
+  box-shadow: 0 0 0 3px rgba(4, 4, 4, 0.1);
+}
+
+.resultsCount {
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Tour list styles */
+.toursList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Status Badge Styles */
+.statusBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusPending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.statusPaid {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.statusFailed {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.statusRefunded {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.statusDefault {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Load More Section */
+.loadMoreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.loadMoreButton {
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  background-color: none;
+}
+
+.loadMoreButton:hover {
+  transform: translateY(-2px);
+}
+
+.loadMoreButton:active {
+  transform: translateY(0);
+}
+
+.loadMoreInfo {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #6b7280;
+}
+
+.emptyState svg {
+  width: 80px;
+  height: 80px;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.emptyState h2 {
+  font-size: 1.5rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.errorActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.retryButton {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.retryButton:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.sampleButton {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.sampleButton:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.debugInfo {
+  margin-top: 2rem;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.debugInfo summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #f3f4f6;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.debugInfo summary:hover {
+  background: #e5e7eb;
+}
+
+.debugInfo div {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+}
+
+.debugInfo p {
+  margin: 0.5rem 0;
+  color: #4b5563;
+  text-align: left;
+}
+
+.debugInfo strong {
+  color: #374151;
+}
+
+.debugInfo strong {
+  color: #374151;
+}
+
+.indexWarning {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.indexWarning h3 {
+  margin: 0 0 1rem 0;
+  color: #92400e;
+  text-align: center;
+}
+
+.indexWarning p {
+  margin: 0.5rem 0;
+  color: #78350f;
+  text-align: left;
+}
+
+.indexInstructions {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border-left: 4px solid #f59e0b;
+}
+
+.indexInstructions ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.indexInstructions li {
+  margin: 0.25rem 0;
+  color: #374151;
+}
+
+.indexLink {
+  display: inline-block;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white !important;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.indexLink:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .toursList {
     grid-template-columns: 1fr;
@@ -67,5 +329,40 @@
   
   .myToursPage h1 {
     font-size: 1.5rem;
+  }
+
+  .filterRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .filterRow label {
+    min-width: auto;
+  }
+
+  .filterSelect {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .tourCard {
+    margin: 0 0.5rem;
+  }
+
+  .detailRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  .filterSection {
+    padding: 1rem;
   }
 }
