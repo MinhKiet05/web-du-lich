@@ -22,6 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutPage() {
   const mainRef = useRef(null);
+  const timelineSectionRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -132,12 +133,19 @@ export default function AboutPage() {
           <div className={styles.description}>
             <h3>Lịch trình được cá nhân hoá!</h3>
             <p>Chúng tôi nói không với những chuyến đi rập khuôn. Mọi lịch trình đều được 'may đo' tỉ mỉ dựa trên tính cách, sở thích và nhịp điệu riêng của bạn, đảm bảo mỗi khoảnh khắc trôi qua đều trọn vẹn ý nghĩa và cảm xúc.</p>
-            <button className={styles.moreBtn}>Hiểu thêm về chúng tôi</button>
+            <button 
+              className={styles.moreBtn}
+              onClick={() => {
+                timelineSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
+              Hiểu thêm về chúng tôi
+            </button>
           </div>
         </div>
       </div>
 
-      <div className={styles.timelineSection}>
+      <div className={styles.timelineSection} ref={timelineSectionRef}>
         <div className={styles.sectionHeader}>
           <p>Hành trình của chúng tôi</p>
           <h2>Vì sao chọn Travlia?</h2>
